@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvfvfroewh8wh"]
+
+[ext_resource type="Texture2D" uid="uid://dtuysnsibxsgy" path="res://Art/Room.png" id="1_i6wmw"]
+
+[node name="Living Room Screen" type="Node2D"]
+
+[node name="Living Room Background PNG" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_i6wmw")
