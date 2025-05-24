@@ -1,0 +1,12 @@
+var rate = 0.005
+var color
+var meter
+
+func add_meter(food):
+  meter += food
+
+func meter_degrade(time):
+  meter -= time * rate
+
+func set_meter(level):
+  meter == level
