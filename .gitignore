@@ -1,0 +1,5 @@
+node_modules/
+dist/
+# Godot 4+ specific ignores
+.godot/
+/android/
