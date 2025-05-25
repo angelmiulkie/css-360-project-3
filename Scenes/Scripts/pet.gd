@@ -34,6 +34,19 @@ func _on_timer_timeout() -> void:
 	# Bathroom begins to decay as well
 	bathroom = max(0, bathroom - DECAY_RATE)
 
+# Thhis is to create a drop target over the pet so the
+# Food items can be dragged and dropped 
+func _can_drop_data(position, data):
+	return data.has("Value")
+
+# This is to actually have the pet react to the item
+# That is getting dropped
+func _drop_data(position, data):
+	var food_value = data["Value"]
+	hunger = min(100, hunger + food_value)
+	# TODO: create an animation that shows that the
+	# pet has eaten the piece of foood
+
 # This checks the stats if they get too low
 func _check_pet_status():
 	if hunger <= CRITICAL_LEVEL:

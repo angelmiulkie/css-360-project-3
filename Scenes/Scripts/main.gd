@@ -9,3 +9,9 @@ extends Node2D
 func _on_food_icon_button_pressed() -> void:
 	inventory_panel.visible = !inventory_panel.visible
 	$"Action Buttons".visible = !$"Inventory Panel".visible
+
+# If the X button is pressed, the inventory would disappear
+# and then the icons would come back 
+func _on_inventory_x_button_pressed() -> void:
+	inventory_panel.visible = false
+	$"Action Buttons".visible = true
