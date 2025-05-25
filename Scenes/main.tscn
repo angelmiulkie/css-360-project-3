@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://xfj8xag6vw00"]
 
-[ext_resource type="Script" uid="uid://b6cptanqdhpir" path="res://Scenes/Scripts/main.gd" id="1_6bp64"]
+[ext_resource type="Script" uid="uid://d4lh23blssowx" path="res://Scenes/Scripts/main.gd" id="1_6bp64"]
 [ext_resource type="Texture2D" uid="uid://bhtfrbuyd56pn" path="res://Art/Room.png" id="1_8gbba"]
-[ext_resource type="PackedScene" uid="uid://dj2ddy3exlyd8" path="res://Scenes/pet.tscn" id="2_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://ltvw1dmu0kux" path="res://Scenes/pet.tscn" id="2_jjvhh"]
 [ext_resource type="Texture2D" uid="uid://dkrbjktkprtj3" path="res://Art/Foot Button - Transparent.png" id="3_kry3j"]
 [ext_resource type="Texture2D" uid="uid://ct1fpwlimvi8p" path="res://Art/Toilet Button - Transparent.png" id="4_jjvhh"]
 [ext_resource type="Texture2D" uid="uid://wmsfk208ntss" path="res://Art/Washing Button - Transparent.png" id="6_344ge"]
