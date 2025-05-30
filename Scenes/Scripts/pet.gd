@@ -6,8 +6,11 @@ var hunger := 100
 var cleanliness := 100
 var bathroom := 100
 
+# When stats were last saved, in Unix time
+var last_save_time := 0
+
 # The location of the save file
-const save_path := "user://stats.save"
+const save_path := "user://data.save"
 
 # These are to cap the max of the variables above
 const MAX_STAT := 100
@@ -27,20 +30,36 @@ const CRITICAL_LEVEL := 0
 
 # this begins the timer when the scene begins
 func _ready():
+	# Uses stats from save file if present
 	if FileAccess.file_exists(save_path):
 		_load_stats()
+	
+	# Skips ahead a number of intervals based on how much time passed
+	# since the last save was made
+	var cur_time = Time.get_unix_time_from_system()
+	var intervals = (cur_time - last_save_time) / DECAY_INTERVAL_SPEEDRUN
+	
+	if DECAY_RATE * intervals > MAX_STAT:
+		# Pet must have died by now
+		_on_timer_timeout()
+	else:
+		# Skip ahead for time passed since last session
+		for i in range(intervals):
+			_on_timer_timeout()
+	
+	# Starts the timer
 	decay_timer.wait_time = DECAY_INTERVAL_SPEEDRUN
 	decay_timer.start()
 
 # Once the game starts, this begins the decay automatically
 func _on_timer_timeout() -> void:
-	print(hunger)
 	# The hunger begins to decay
 	hunger = max(0, hunger - DECAY_RATE)
 	# Cleanliness begins to decay
 	cleanliness = max(0, cleanliness - DECAY_RATE)
 	# Bathroom begins to decay as well
 	bathroom = max(0, bathroom - DECAY_RATE)
+	print(hunger) # For testing purposes
 	_check_pet_status()
 
 # Thhis is to create a drop target over the pet so the
@@ -87,6 +106,8 @@ func _save_stats():
 	file.store_var(hunger)
 	file.store_var(cleanliness)
 	file.store_var(bathroom)
+	last_save_time = Time.get_unix_time_from_system() # sets to current time
+	file.store_var(last_save_time)
 
 func _load_stats():
 	if FileAccess.file_exists(save_path):
@@ -94,4 +115,4 @@ func _load_stats():
 		hunger = file.get_var(hunger)
 		cleanliness = file.get_var(cleanliness)
 		bathroom = file.get_var(bathroom)
-		
+		last_save_time = file.get_var(last_save_time)
