@@ -18,8 +18,6 @@ const MAX_STAT := 100
 # purposes. For right now, it is set to every hour, it loses 10 points.
 # This is how OFTEN each bar decays
 const DECAY_INTERVAL := 3600.0 # 1 hour in seconds 
-# Alternate value for testing, possible speedrun mode
-const DECAY_INTERVAL_SPEEDRUN := 1.0
 # This is how MUCH each bar decays
 const DECAY_RATE := 10
 # This is if any bar reaches 0, the pet will die
@@ -30,25 +28,26 @@ const CRITICAL_LEVEL := 0
 
 # this begins the timer when the scene begins
 func _ready():
-	# Uses stats from save file if present
 	if FileAccess.file_exists(save_path):
-		_load_stats()
+		_load_stats() # loads existing save
+	else:
+		# creates new save, important if player quits within first interval
+		_save_stats()
 	
 	# Skips ahead a number of intervals based on how much time passed
 	# since the last save was made
 	var cur_time = Time.get_unix_time_from_system()
-	var intervals = (cur_time - last_save_time) / DECAY_INTERVAL_SPEEDRUN
-	
-	if DECAY_RATE * intervals > MAX_STAT:
+	var num_intervals = (cur_time - last_save_time) / Global.decay_interval
+	if DECAY_RATE * num_intervals > MAX_STAT:
 		# Pet must have died by now
 		_on_timer_timeout()
 	else:
 		# Skip ahead for time passed since last session
-		for i in range(intervals):
+		for i in range(num_intervals):
 			_on_timer_timeout()
 	
 	# Starts the timer
-	decay_timer.wait_time = DECAY_INTERVAL_SPEEDRUN
+	decay_timer.wait_time = Global.decay_interval
 	decay_timer.start()
 
 # Once the game starts, this begins the decay automatically
@@ -108,6 +107,7 @@ func _save_stats():
 	file.store_var(bathroom)
 	last_save_time = Time.get_unix_time_from_system() # sets to current time
 	file.store_var(last_save_time)
+	file.store_var(Global.decay_interval)
 
 func _load_stats():
 	if FileAccess.file_exists(save_path):
@@ -116,3 +116,4 @@ func _load_stats():
 		cleanliness = file.get_var(cleanliness)
 		bathroom = file.get_var(bathroom)
 		last_save_time = file.get_var(last_save_time)
+		Global.decay_interval = file.get_var(Global.decay_interval)
