@@ -40,7 +40,7 @@ func _ready():
 	var num_intervals = (cur_time - last_save_time) / Global.decay_interval
 	if DECAY_RATE * num_intervals > MAX_STAT:
 		# Pet must have died by now
-		_on_timer_timeout()
+		_pet_die("Too Hungry")
 	else:
 		# Skip ahead for time passed since last session
 		for i in range(num_intervals):
