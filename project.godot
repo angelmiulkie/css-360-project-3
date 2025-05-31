@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Tacogotchi"
-run/main_scene="uid://xfj8xag6vw00"
+run/main_scene="uid://w2tyfhu1r1qu"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*res://Scenes/Scripts/global.gd"
 
 [display]
 
