@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://ckknjx0h25o7v" path="res://Scenes/Scripts/pet.gd" id="1_qckc7"]
 [ext_resource type="Texture2D" uid="uid://ck0fdwxwoiuda" path="res://Art/Pet - Transparent.png" id="2_df2ap"]
 [ext_resource type="Script" uid="uid://c1rtb6mxfu2ph" path="res://Scenes/Scripts/drag_and_drop_zone.gd" id="3_df2ap"]
-[ext_resource type="Script" uid="uid://dvl4gv5eu3xp1" path="res://Scenes/Scripts/zone.gd" id="4_lq6iv"]
 [ext_resource type="PackedScene" uid="uid://bmanowsgmxhvb" path="res://Scenes/hunger_bar.tscn" id="4_u6lfn"]
+[ext_resource type="Texture2D" uid="uid://dkrbjktkprtj3" path="res://Art/Foot Button - Transparent.png" id="5_lq6iv"]
 
 [node name="Pet" type="Node2D"]
 script = ExtResource("1_qckc7")
@@ -24,18 +24,27 @@ offset_left = 300.0
 offset_top = 230.0
 offset_right = 844.0
 offset_bottom = 598.0
-script = ExtResource("3_df2ap")
 
 [node name="Zone" type="Panel" parent="Drag and Drop Zone"]
 layout_mode = 0
-offset_right = 538.0
-offset_bottom = 370.0
-script = ExtResource("4_lq6iv")
+offset_right = 547.0
+offset_bottom = 382.0
+script = ExtResource("3_df2ap")
 
 [node name="Health Bar" parent="." instance=ExtResource("4_u6lfn")]
 offset_left = 902.0
 offset_top = 644.0
 offset_right = 1096.0
 offset_bottom = 681.0
+value = 0.0
+
+[node name="Hunger Icon" type="TextureRect" parent="Health Bar"]
+layout_mode = 0
+offset_left = -84.0
+offset_top = -31.0
+offset_right = 8.0
+offset_bottom = 63.0
+texture = ExtResource("5_lq6iv")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="gui_input" from="Drag and Drop Zone/Zone" to="Drag and Drop Zone/Zone" method="_on_gui_input"]

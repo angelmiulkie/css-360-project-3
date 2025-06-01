@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://vx2qjln38qsc"]
+
+[ext_resource type="Texture2D" uid="uid://dgn4xfn2mxeat" path="res://Art/Food Strawberry - Transparent.png" id="1_3413l"]
+[ext_resource type="Script" uid="uid://sxd5ml3ferw8" path="res://Scenes/Scripts/strawberry_food_item.gd" id="1_ru26v"]
+
+[node name="Strawberry" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_3413l")
+script = ExtResource("1_ru26v")

@@ -1,5 +1,8 @@
 extends Node2D
 
+# Emitting singals for hunger
+signal hunger_changed(new_hunger)
+
 # Variables that will hold the pet's stats 
 # This includes hunger, cleanliness, and bathroom
 var hunger := 100
@@ -28,6 +31,7 @@ var CRITICAL_LEVEL = 0
 
 # this begins the timer when the scene begins
 func _ready():
+	# File Saving Mechanisms - Daniel!
 	if FileAccess.file_exists(save_path):
 		_load_stats() # loads existing save
 	else:
@@ -49,11 +53,13 @@ func _ready():
 	# Starts the timer
 	decay_timer.wait_time = Global.decay_interval
 	decay_timer.start()
+	print("Current Hunger:", hunger)
 
 # Once the game starts, this begins the decay automatically
 func _on_timer_timeout() -> void:
 	# The hunger begins to decay
 	hunger = max(0, hunger - DECAY_RATE)
+	emit_signal("hunger_changed", hunger)
 	# Cleanliness begins to decay
 	cleanliness = max(0, cleanliness - DECAY_RATE)
 	# Bathroom begins to decay as well
@@ -66,6 +72,7 @@ func _feed(amount: int) -> void:
 	print("Feeding Pet, New Hunger: ", hunger)
 	# TODO: create an animation that shows the pet eating
 	print(hunger) # For testing purposes
+	emit_signal("hunger_changed", hunger)
 	_check_pet_status()
 
 # Thhis is to create a drop target over the pet so the
