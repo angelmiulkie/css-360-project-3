@@ -26,6 +26,7 @@ offset_bottom = 682.0
 texture = ExtResource("1_a0mxf")
 
 [node name="Strawberry Price" type="Label" parent="Background - Shop Inventory"]
+layout_mode = 0
 offset_left = 113.0
 offset_top = 60.0
 offset_right = 159.0
@@ -38,6 +39,7 @@ text = "$5"
 horizontal_alignment = 1
 
 [node name="Cookie Price" type="Label" parent="Background - Shop Inventory"]
+layout_mode = 0
 offset_left = 221.0
 offset_top = 61.0
 offset_right = 274.0
@@ -50,6 +52,7 @@ text = "$10"
 horizontal_alignment = 1
 
 [node name="Lettuce Price" type="Label" parent="Background - Shop Inventory"]
+layout_mode = 0
 offset_left = 330.0
 offset_top = 61.0
 offset_right = 388.0
@@ -62,6 +65,7 @@ text = "$15"
 horizontal_alignment = 1
 
 [node name="Toilet Paper Price" type="Label" parent="Background - Shop Inventory"]
+layout_mode = 0
 offset_left = 560.0
 offset_top = 62.0
 offset_right = 618.0
@@ -74,6 +78,7 @@ text = "$10"
 horizontal_alignment = 1
 
 [node name="Shower Sponge Price" type="Label" parent="Background - Shop Inventory"]
+layout_mode = 0
 offset_left = 790.0
 offset_top = 63.0
 offset_right = 848.0
