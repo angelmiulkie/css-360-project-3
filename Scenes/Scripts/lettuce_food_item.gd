@@ -2,8 +2,8 @@ extends TextureRect
 
 # variables that show how much each food value is
 # and tahe name of the food
-var food_value = 10
-var food_name = "Strawberry"
+var food_value = 20
+var food_name = "Lettuce"
 
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://88ad14fyg71g"]
+
+[ext_resource type="Texture2D" uid="uid://dy6p78431pvs2" path="res://Art/Cookie Transparent.png" id="1_ku7mm"]
+[ext_resource type="Script" uid="uid://b2fa2h00jg1cb" path="res://Scenes/Scripts/cookie_food_item.gd" id="2_px6u8"]
+
+[node name="Cookie" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_ku7mm")
+script = ExtResource("2_px6u8")

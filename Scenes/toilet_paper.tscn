@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1gykrkcb76wt"]
+
+[ext_resource type="Texture2D" uid="uid://cyg82pmu644do" path="res://Art/Toilet Paper - Transparent.png" id="1_3cmy5"]
+[ext_resource type="Script" uid="uid://bbrmk6788v72l" path="res://Scenes/Scripts/toilet_paper.gd" id="2_behgc"]
+
+[node name="Toilet Paper" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_3cmy5")
+script = ExtResource("2_behgc")

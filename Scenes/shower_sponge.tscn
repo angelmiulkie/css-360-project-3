@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c71l7ma44rx1r"]
+
+[ext_resource type="Texture2D" uid="uid://cmmko6iiy1i4c" path="res://Art/Sponge - Transparent.png" id="1_ldwdc"]
+
+[node name="Shower Sponge" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_ldwdc")

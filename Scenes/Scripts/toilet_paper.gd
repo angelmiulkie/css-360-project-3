@@ -1,9 +1,9 @@
 extends TextureRect
 
-# variables that show how much each food value is
-# and tahe name of the food
-var food_value = 10
-var food_name = "Strawberry"
+# variables that show how much each bathroom value is
+# and tahe name of the item
+var bathroom_value = 25
+var item_name = "Toilet Paper"
 
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -14,8 +14,8 @@ func _get_drag_data(position: Vector2) -> Variant:
 	set_drag_preview(preview)
 	visible = false
 	return {
-		"Name": food_name,
-		"Value": food_value,
+		"Name": item_name,
+		"Value": bathroom_value,
 		"Texture": texture,
 		"Source Node": self
 	}
