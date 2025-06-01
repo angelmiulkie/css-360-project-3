@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://xfj8xag6vw00"]
+[gd_scene load_steps=22 format=3 uid="uid://xfj8xag6vw00"]
 
 [ext_resource type="Script" uid="uid://d4lh23blssowx" path="res://Scenes/Scripts/main.gd" id="1_6bp64"]
 [ext_resource type="Texture2D" uid="uid://bhtfrbuyd56pn" path="res://Art/Room.png" id="1_8gbba"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dkrbjktkprtj3" path="res://Art/Foot Button - Transparent.png" id="3_kry3j"]
 [ext_resource type="Texture2D" uid="uid://ct1fpwlimvi8p" path="res://Art/Toilet Button - Transparent.png" id="4_jjvhh"]
 [ext_resource type="Texture2D" uid="uid://wmsfk208ntss" path="res://Art/Washing Button - Transparent.png" id="6_344ge"]
+[ext_resource type="Texture2D" uid="uid://d1apv1i0xcwwx" path="res://Art/Shop Button - Transparent.png" id="7_b3802"]
 [ext_resource type="Texture2D" uid="uid://d16tln5gsinwx" path="res://Art/Inventory - Transparent.png" id="7_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://vx2qjln38qsc" path="res://Scenes/strawberry.tscn" id="8_hptm8"]
 [ext_resource type="PackedScene" uid="uid://88ad14fyg71g" path="res://Scenes/cookie.tscn" id="9_ynf5e"]
@@ -16,9 +17,19 @@
 [ext_resource type="Script" uid="uid://b140vcq1ktvwc" path="res://Scenes/Scripts/Bathroom + Shower Items/shower_sponge.gd" id="14_wsu2k"]
 [ext_resource type="FontFile" uid="uid://cvcowfaoh1fy" path="res://Fonts/Atop-R99O3.ttf" id="15_k12tt"]
 [ext_resource type="Texture2D" uid="uid://bwi85i64yblfu" path="res://Art/Cat Coin - Transparent.png" id="15_wsu2k"]
+[ext_resource type="PackedScene" uid="uid://cxq5t6ukmehtb" path="res://Scenes/shop.tscn" id="18_fevyy"]
+[ext_resource type="Script" uid="uid://vk8pnkcgi4ba" path="res://Scenes/Scripts/shop.gd" id="19_fevyy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k12tt"]
 bg_color = Color(0.901961, 0.772549, 0.596078, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hibaj"]
+bg_color = Color(0.996078, 0.964706, 0.890196, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.858824, 0.756863, 0.619608, 1)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_6bp64")
@@ -75,6 +86,14 @@ offset_right = 365.0
 offset_bottom = 740.0
 texture_normal = ExtResource("6_344ge")
 stretch_mode = 0
+
+[node name="Shop Icon Button" type="TextureButton" parent="Action Buttons"]
+layout_mode = 0
+offset_left = 387.0
+offset_top = 641.0
+offset_right = 491.0
+offset_bottom = 734.0
+texture_normal = ExtResource("7_b3802")
 
 [node name="Inventory Panel" type="Control" parent="."]
 visible = false
@@ -212,9 +231,128 @@ offset_right = 1151.0
 offset_bottom = 104.0
 texture = ExtResource("15_wsu2k")
 
+[node name="Shop" parent="." instance=ExtResource("18_fevyy")]
+visible = false
+script = ExtResource("19_fevyy")
+
+[node name="Shop Inventory X" type="TextureButton" parent="Shop"]
+layout_mode = 0
+offset_left = 197.0
+offset_top = 490.0
+offset_right = 247.0
+offset_bottom = 525.0
+
+[node name="Strawberry" parent="Shop" instance=ExtResource("8_hptm8")]
+layout_mode = 0
+offset_left = 211.0
+offset_top = 563.0
+offset_right = 298.0
+offset_bottom = 650.0
+script = null
+
+[node name="Strawberry Buy Button" type="Button" parent="Shop/Strawberry"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 101.0
+offset_right = 88.0
+offset_bottom = 146.0
+theme_override_colors/font_color = Color(0.443137, 0.262745, 0.807843, 1)
+theme_override_fonts/font = ExtResource("15_k12tt")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_hibaj")
+text = "BUY!"
+
+[node name="Cookie" parent="Shop" instance=ExtResource("9_ynf5e")]
+layout_mode = 0
+offset_left = 340.0
+offset_top = 569.0
+offset_right = 416.0
+offset_bottom = 642.0
+script = null
+
+[node name="Cookie Buy Button" type="Button" parent="Shop/Cookie"]
+layout_mode = 0
+offset_left = -9.0
+offset_top = 94.0
+offset_right = 74.0
+offset_bottom = 139.0
+theme_override_colors/font_color = Color(0.443137, 0.262745, 0.807843, 1)
+theme_override_fonts/font = ExtResource("15_k12tt")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_hibaj")
+text = "BUY!"
+
+[node name="Lettuce" parent="Shop" instance=ExtResource("10_hptm8")]
+layout_mode = 0
+offset_left = 447.0
+offset_top = 566.0
+offset_right = 531.0
+offset_bottom = 642.0
+script = null
+
+[node name="Lettuce Buy Button" type="Button" parent="Shop/Lettuce"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 98.0
+offset_right = 81.0
+offset_bottom = 143.0
+theme_override_colors/font_color = Color(0.443137, 0.262745, 0.807843, 1)
+theme_override_fonts/font = ExtResource("15_k12tt")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_hibaj")
+text = "BUY!"
+
+[node name="Toilet Paper" parent="Shop" instance=ExtResource("12_6iyac")]
+layout_mode = 0
+offset_left = 676.0
+offset_top = 564.0
+offset_right = 754.0
+offset_bottom = 653.0
+expand_mode = 1
+script = null
+
+[node name="Toilet Paper Buy Button" type="Button" parent="Shop/Toilet Paper"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 99.0
+offset_right = 84.0
+offset_bottom = 144.0
+theme_override_colors/font_color = Color(0.443137, 0.262745, 0.807843, 1)
+theme_override_fonts/font = ExtResource("15_k12tt")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_hibaj")
+text = "BUY!"
+
+[node name="Shower Sponge" parent="Shop" instance=ExtResource("13_jkdf5")]
+layout_mode = 0
+offset_left = 900.0
+offset_top = 561.0
+offset_right = 997.0
+offset_bottom = 650.0
+expand_mode = 1
+
+[node name="Shower Sponge Buy Button" type="Button" parent="Shop/Shower Sponge"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 101.0
+offset_right = 90.0
+offset_bottom = 146.0
+theme_override_colors/font_color = Color(0.443137, 0.262745, 0.807843, 1)
+theme_override_fonts/font = ExtResource("15_k12tt")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_hibaj")
+text = "BUY!"
+
 [connection signal="pressed" from="Action Buttons/Food Icon Button" to="." method="_on_food_icon_button_pressed"]
 [connection signal="pressed" from="Action Buttons/Bathroom Icon Button" to="." method="_on_bathroom_icon_button_pressed"]
 [connection signal="pressed" from="Action Buttons/Washing Icon Button" to="." method="_on_washing_icon_button_pressed"]
+[connection signal="pressed" from="Action Buttons/Shop Icon Button" to="." method="_on_shop_icon_button_pressed"]
 [connection signal="pressed" from="Inventory Panel/Inventory X Button" to="." method="_on_inventory_x_button_pressed"]
 [connection signal="pressed" from="Bathroom Inventory Panel/Bathroom Inventory X Button" to="." method="_on_bathroom_inventory_x_button_pressed"]
 [connection signal="pressed" from="Shower Inventory Panel/Shower Inventory X Button" to="." method="_on_shower_inventory_x_button_pressed"]
+[connection signal="pressed" from="Shop/Shop Inventory X" to="." method="_on_shop_inventory_x_pressed"]
+[connection signal="pressed" from="Shop/Strawberry/Strawberry Buy Button" to="." method="_on_strawberry_buy_button_pressed"]
+[connection signal="pressed" from="Shop/Cookie/Cookie Buy Button" to="." method="_on_cookie_buy_button_pressed"]
+[connection signal="pressed" from="Shop/Lettuce/Lettuce Buy Button" to="." method="_on_lettuce_buy_button_pressed"]
+[connection signal="pressed" from="Shop/Toilet Paper/Toilet Paper Buy Button" to="." method="_on_toilet_paper_buy_button_pressed"]
+[connection signal="pressed" from="Shop/Shower Sponge/Shower Sponge Buy Button" to="." method="_on_shower_sponge_buy_button_pressed"]
