@@ -30,6 +30,12 @@ func _ready():
 		print("No More Coins Left!")
 		coins = 0
 		_update_coin_label()
+	
+	# For the saving function need to connect the signal
+	var pause_screen = $"Pause Screen"
+	if pause_screen:
+		print("Connecting pause_screen save_requested signal")
+		pause_screen.connect("save_requested", Callable(self, "_save_game"))
 
 # COIN FUNCTIONS ###############################################################
 # Updating the coins after every 5 minutes, you get 5 coins
@@ -129,32 +135,60 @@ func _on_strawberry_buy_button_pressed() -> void:
 	if _no_more_coins() == true:
 		$"Inventory Panel/Strawberry".visible = false
 	else: 
-		$"Inventory Panel/Strawberry".visible = true # Putting back the original strwaberry
+		$"Inventory Panel/Strawberry".visible = true # Putting back the original strawberry
+	_save_coins()
 
 # Once the cookie buy button has been pressed
 func _on_cookie_buy_button_pressed() -> void:
 	coins = coins - 10
 	_update_coin_label()
-	$"Inventory Panel/Cookie".visible = true
 	_no_more_coins()
+	if _no_more_coins() == true:
+		$"Inventory Panel/Cookie".visible = false
+	else: 
+		$"Inventory Panel/Cookie".visible = true
+	_save_coins()
 
 # Once the lettuce buy button has been pressed
 func _on_lettuce_buy_button_pressed() -> void:
 	coins = coins - 15
 	_update_coin_label()
-	$"Inventory Panel/Lettuce".visible = true
 	_no_more_coins()
+	if _no_more_coins() == true:
+		$"Inventory Panel/Lettuce".visible = false
+	else: 
+		$"Inventory Panel/Lettuce".visible = true
+	_save_coins()
 
 # Once the toilet paper button has been pressed
 func _on_toilet_paper_buy_button_pressed() -> void:
 	coins = coins - 10
 	_update_coin_label()
-	$"Bathroom Inventory Panel/Toilet Paper".visible = true
 	_no_more_coins()
+	if _no_more_coins() == true:
+		$"Bathroom Inventory Panel/Toilet Paper".visible = false
+	else: 
+		$"Bathroom Inventory Panel/Toilet Paper".visible = true
+	_save_coins()
 
 # Once the shower sponge button has been pressed
 func _on_shower_sponge_buy_button_pressed() -> void:
 	coins = coins - 10
 	_update_coin_label()
-	$"Shower Inventory Panel/Shower Sponge".visible = true
 	_no_more_coins()
+	if _no_more_coins() == true:
+		$"Shower Inventory Panel/Shower Sponge".visible = false
+	else: 
+		$"Shower Inventory Panel/Shower Sponge".visible = true
+	_save_coins()
+
+# If the home icon is pressed, the pause screen menu will come up
+func _on_home_icon_button_pressed() -> void:
+	$"Pause Screen".visible = true
+
+# Creating a save function that saves everything
+func _save_game():
+	print("Entered game save")
+	_save_coins()
+	$Pet._save_stats()
+	print("Game Saved!")
