@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bmanowsgmxhvb"]
 
-[ext_resource type="Script" uid="uid://cxg1obw641yok" path="res://Scenes/Scripts/hunger_bar.gd" id="1_1idgn"]
+[ext_resource type="Script" uid="uid://cxg1obw641yok" path="res://Scenes/Scripts/Health Bars/hunger_bar.gd" id="1_1idgn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dl3mn"]
 bg_color = Color(0.843137, 0.462745, 0.588235, 1)

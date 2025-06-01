@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://xfj8xag6vw00"]
+[gd_scene load_steps=18 format=3 uid="uid://xfj8xag6vw00"]
 
 [ext_resource type="Script" uid="uid://d4lh23blssowx" path="res://Scenes/Scripts/main.gd" id="1_6bp64"]
 [ext_resource type="Texture2D" uid="uid://bhtfrbuyd56pn" path="res://Art/Room.png" id="1_8gbba"]
@@ -13,7 +13,12 @@
 [ext_resource type="Texture2D" uid="uid://d2bh2grt5w1m7" path="res://Art/Item Box - Transparent.png" id="11_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://b1gykrkcb76wt" path="res://Scenes/toilet_paper.tscn" id="12_6iyac"]
 [ext_resource type="PackedScene" uid="uid://c71l7ma44rx1r" path="res://Scenes/shower_sponge.tscn" id="13_jkdf5"]
-[ext_resource type="Script" uid="uid://b140vcq1ktvwc" path="res://Scenes/Scripts/shower_sponge.gd" id="14_wsu2k"]
+[ext_resource type="Script" uid="uid://b140vcq1ktvwc" path="res://Scenes/Scripts/Bathroom + Shower Items/shower_sponge.gd" id="14_wsu2k"]
+[ext_resource type="FontFile" uid="uid://cvcowfaoh1fy" path="res://Fonts/Atop-R99O3.ttf" id="15_k12tt"]
+[ext_resource type="Texture2D" uid="uid://bwi85i64yblfu" path="res://Art/Cat Coin - Transparent.png" id="15_wsu2k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k12tt"]
+bg_color = Color(0.901961, 0.772549, 0.596078, 1)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_6bp64")
@@ -175,6 +180,37 @@ offset_right = 649.0
 offset_bottom = 714.0
 expand_mode = 1
 script = ExtResource("14_wsu2k")
+
+[node name="Coin Timer" type="Timer" parent="."]
+wait_time = 300.0
+autostart = true
+
+[node name="Coins" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Coins Label" type="Label" parent="Coins"]
+layout_mode = 0
+offset_left = 921.0
+offset_top = 17.0
+offset_right = 1060.0
+offset_bottom = 86.0
+theme_override_colors/font_color = Color(0.447059, 0.266667, 0.792157, 1)
+theme_override_fonts/font = ExtResource("15_k12tt")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_k12tt")
+text = "100"
+horizontal_alignment = 1
+
+[node name="Coins Icon" type="TextureRect" parent="Coins"]
+layout_mode = 0
+offset_left = 1048.0
+offset_top = -1.0
+offset_right = 1151.0
+offset_bottom = 104.0
+texture = ExtResource("15_wsu2k")
 
 [connection signal="pressed" from="Action Buttons/Food Icon Button" to="." method="_on_food_icon_button_pressed"]
 [connection signal="pressed" from="Action Buttons/Bathroom Icon Button" to="." method="_on_bathroom_icon_button_pressed"]
