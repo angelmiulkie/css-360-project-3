@@ -1,7 +1,7 @@
 extends TextureRect
 
 # variables that show how much each food value is
-# and the name of the food
+# and tahe name of the food
 var food_value = 5
 var food_name = "Strawberry"
 
@@ -46,3 +46,7 @@ func _get_drag_data(position):
 		"Texture": self.texture
 	}
 	return drag_data
+
+func _notification(what):
+	if what == NOTIFICATION_DRAG_END:
+		visible = true
