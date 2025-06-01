@@ -43,6 +43,11 @@ func _ready():
 		# creates new save, important if player quits within first interval
 		_save_stats()
 	
+	# Emitting signals so the health bar UIs get updated right away
+	emit_signal("hunger_changed", hunger)
+	emit_signal("bathroom_changed", bathroom)
+	emit_signal("shower_changed", cleanliness)
+	
 	# Skips ahead a number of intervals based on how much time passed
 	# since the last save was made
 	var cur_time = Time.get_unix_time_from_system()
