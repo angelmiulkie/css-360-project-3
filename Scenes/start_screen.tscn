@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://w2tyfhu1r1qu"]
+[gd_scene load_steps=6 format=3 uid="uid://k2qqky2qffh3"]
 
 [ext_resource type="Texture2D" uid="uid://y3ykymapx1a5" path="res://Art/StartScreen/BlurredScreen.png" id="1_i8r30"]
-[ext_resource type="Script" uid="uid://xmn6qxijj10w" path="res://Scenes/Scripts/start_screen.gd" id="1_mtlf8"]
+[ext_resource type="Script" uid="uid://bnm26m1vji802" path="res://Scenes/Scripts/start_screen.gd" id="1_mtlf8"]
 [ext_resource type="Texture2D" uid="uid://cmlwoxdb40gxb" path="res://Art/StartScreen/Title-Transparent.png" id="3_nqnrp"]
 [ext_resource type="Texture2D" uid="uid://d0gmaytr55tca" path="res://Art/StartScreen/QuitButton-Transparent.png" id="4_5a7ho"]
 [ext_resource type="Texture2D" uid="uid://ccq1ur4g0gplg" path="res://Art/StartScreen/StartButton-Transparent.png" id="5_ssogg"]

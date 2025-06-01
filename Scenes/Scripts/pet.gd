@@ -1,5 +1,12 @@
 extends Node2D
 
+# Emitting singals for hunger
+signal hunger_changed(new_hunger)
+# Emitting signals for bathroom
+signal bathroom_changed(new_bathroom)
+# Emitting singals for shower
+signal shower_changed(new_shower)
+
 # Variables that will hold the pet's stats 
 # This includes hunger, cleanliness, and bathroom
 var hunger := 100
@@ -13,31 +20,38 @@ var last_save_time := 0
 const save_path := "user://data.save"
 
 # These are to cap the max of the variables above
-const MAX_STAT := 100
+var MAX_STAT = 100
 # This const, you cna change how fast you want each bar to decay for testing purposes or other
 # purposes. For right now, it is set to every hour, it loses 10 points.
 # This is how OFTEN each bar decays
-const DECAY_INTERVAL := 3600.0 # 1 hour in seconds 
+var DECAY_INTERVAL := 3600.0 # 1 hour in seconds 
 # This is how MUCH each bar decays
-const DECAY_RATE := 10
+var DECAY_RATE := 10
 # This is if any bar reaches 0, the pet will die
-const CRITICAL_LEVEL := 0
+var CRITICAL_LEVEL = 0
 
 # creating a name/reference for the timer
 @onready var decay_timer = $Timer
 
-# this begins the timer when the scene begins
+# READY #######################################################################
+# this begins the timer when the scene begins 
 func _ready():
+	# File Saving Mechanisms - Daniel!
 	if FileAccess.file_exists(save_path):
 		_load_stats() # loads existing save
 	else:
 		# creates new save, important if player quits within first interval
 		_save_stats()
 	
+	# Emitting signals so the health bar UIs get updated right away
+	emit_signal("hunger_changed", hunger)
+	emit_signal("bathroom_changed", bathroom)
+	emit_signal("shower_changed", cleanliness)
+	
 	# Skips ahead a number of intervals based on how much time passed
 	# since the last save was made
 	var cur_time = Time.get_unix_time_from_system()
-	var num_intervals = (cur_time - last_save_time) / Global.decay_interval
+	var num_intervals = int((cur_time - last_save_time) / Global.decay_interval)
 	if DECAY_RATE * num_intervals > MAX_STAT:
 		# Pet must have died by now
 		_pet_die("Too Hungry")
@@ -49,6 +63,11 @@ func _ready():
 	# Starts the timer
 	decay_timer.wait_time = Global.decay_interval
 	decay_timer.start()
+	
+	# For Testing
+	print("Current Hunger:", hunger)
+	print("Current Bathroom:", bathroom)
+	print("Current Cleanliness:", cleanliness)
 
 # Once the game starts, this begins the decay automatically
 func _on_timer_timeout() -> void:
@@ -58,22 +77,32 @@ func _on_timer_timeout() -> void:
 	cleanliness = max(0, cleanliness - DECAY_RATE)
 	# Bathroom begins to decay as well
 	bathroom = max(0, bathroom - DECAY_RATE)
-	print(hunger) # For testing purposes
+	
+# ALL PLAYER FUNCTIONS ########################################################
+# Feeding the pet
+func _feed(amount: int) -> void:
+	hunger = min(MAX_STAT, hunger + amount)
+	print("Feeding Pet, New Hunger: ", hunger)
+	# TODO: create an animation that shows the pet eating
+	emit_signal("hunger_changed", hunger)
 	_check_pet_status()
 
-# Thhis is to create a drop target over the pet so the
-# Food items can be dragged and dropped 
-func _can_drop_data(position, data):
-	return data.has("Value")
+# Letting the pet go to the bathroom
+func _go_bathroom(amount: int) -> void:
+	bathroom = min(MAX_STAT, bathroom + amount)
+	print ("Cleaning Pet, New Bathroom: ", bathroom)
+	# TODO: create an animation that shows the pet going to bathroom
+	emit_signal("bathroom_changed", bathroom)
+	_check_pet_status()
 
-# This is to actually have the pet react to the item
-# That is getting dropped
-func _drop_data(position, data):
-	var food_value = data["Value"]
-	hunger = min(100, hunger + food_value)
-	# TODO: create an animation that shows that the
-	# pet has eaten the piece of foood
+func _go_shower(amount: int) -> void:
+	cleanliness = min(MAX_STAT, cleanliness + amount)
+	print ("Showering pet, New Shower: ", cleanliness)
+	#TODO: create an animation that shows the pet showering
+	emit_signal("shower_changed", cleanliness)
+	_check_pet_status()
 
+# PET CHECKS ##################################################################
 # This checks the stats if they get too low
 func _check_pet_status():
 	if hunger <= CRITICAL_LEVEL:
