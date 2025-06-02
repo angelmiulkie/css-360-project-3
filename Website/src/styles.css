@@ -1,61 +1,97 @@
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #fff8ec;
-  color: #333;
+/* Reset & base styles */
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fefcf6;
+  color: #2c2c2c;
+  line-height: 1.6;
+}
+
+.container {
+  width: 90%;
+  max-width: 900px;
+  margin: auto;
+  padding: 20px 0;
+}
+
+/* Header */
 header {
-  background-color: #ffcc66;
-  padding: 20px;
+  background-color: #ffd966;
+  padding: 20px 0;
   text-align: center;
+  border-bottom: 4px solid #ffae42;
 }
 
 header h1 {
-  margin: 0;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
 }
 
 nav {
   margin-top: 10px;
 }
 
-nav a {
-  margin: 0 10px;
-  text-decoration: none;
+.nav-link {
+  margin: 0 15px;
   color: #444;
+  text-decoration: none;
   font-weight: bold;
+  transition: color 0.2s ease;
 }
 
-main {
-  padding: 20px;
-  max-width: 800px;
-  margin: auto;
+.nav-link:hover {
+  color: #e67e22;
 }
 
-.download {
-  text-align: center;
-  margin-top: 30px;
+/* Main content */
+main h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #333;
 }
 
+.intro,
+.download,
+.tutorial {
+  margin-bottom: 40px;
+}
+
+p, ol {
+  font-size: 1.1rem;
+}
+
+/* Button */
 .btn {
   display: inline-block;
   background-color: #ff9933;
   color: #fff;
-  padding: 12px 24px;
-  border-radius: 6px;
+  padding: 12px 30px;
+  border-radius: 8px;
   text-decoration: none;
   font-weight: bold;
+  transition: background-color 0.3s ease;
 }
 
 .btn:hover {
   background-color: #e67e22;
 }
 
+/* Footer */
 footer {
+  background-color: #fff3cc;
   text-align: center;
-  margin-top: 50px;
-  padding: 10px;
-  font-size: 0.9em;
-  color: #777;
+  padding: 15px 0;
+  font-size: 0.9rem;
+  color: #555;
+  border-top: 1px solid #ddd;
 }
+.logo {
+  height: 200px;
+  margin-bottom: -125px; /* pull it up */
+}
+
