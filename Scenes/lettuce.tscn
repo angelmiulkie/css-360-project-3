@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://8g7rbewbaxje"]
+
+[ext_resource type="Texture2D" uid="uid://xi3pptyvpyf7" path="res://Art/Lettuce Transparent.png" id="1_x061p"]
+[ext_resource type="Script" uid="uid://be5i01procqrt" path="res://Scenes/Scripts/Food Items/lettuce_food_item.gd" id="2_del78"]
+
+[node name="Lettuce" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_x061p")
+script = ExtResource("2_del78")

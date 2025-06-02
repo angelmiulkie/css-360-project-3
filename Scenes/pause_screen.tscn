@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://c16e600gjkxpw"]
+
+[ext_resource type="Script" uid="uid://dldu5qn5s1rqb" path="res://Scenes/Scripts/pause_screen.gd" id="1_hl5t3"]
+[ext_resource type="Texture2D" uid="uid://y3ykymapx1a5" path="res://Art/StartScreen/BlurredScreen.png" id="2_16tsp"]
+[ext_resource type="FontFile" uid="uid://cvcowfaoh1fy" path="res://Fonts/Atop-R99O3.ttf" id="3_orahx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_umkmc"]
+bg_color = Color(1, 0.960784, 0.890196, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.901961, 0.772549, 0.603922, 1)
+
+[node name="Pause Screen" type="Node2D"]
+script = ExtResource("1_hl5t3")
+
+[node name="Background - Living Room" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_16tsp")
+
+[node name="Resume Button" type="Button" parent="Background - Living Room"]
+layout_mode = 0
+offset_left = 402.0
+offset_top = 187.0
+offset_right = 737.0
+offset_bottom = 298.0
+theme_override_colors/font_outline_color = Color(0.443137, 0.262745, 0.8, 1)
+theme_override_colors/font_color = Color(0.262745, 0.486275, 0.8, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("3_orahx")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxFlat_umkmc")
+text = "RESUME"
+
+[node name="Quit Button" type="Button" parent="Background - Living Room"]
+offset_left = 402.0
+offset_top = 452.0
+offset_right = 737.0
+offset_bottom = 563.0
+theme_override_colors/font_outline_color = Color(0.443137, 0.262745, 0.8, 1)
+theme_override_colors/font_color = Color(0.262745, 0.486275, 0.8, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("3_orahx")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxFlat_umkmc")
+text = "QUIT"
+
+[node name="Save Button" type="Button" parent="Background - Living Room"]
+offset_left = 402.0
+offset_top = 314.0
+offset_right = 737.0
+offset_bottom = 425.0
+theme_override_colors/font_outline_color = Color(0.443137, 0.262745, 0.8, 1)
+theme_override_colors/font_color = Color(0.262745, 0.486275, 0.8, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("3_orahx")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxFlat_umkmc")
+text = "SAVE"
+
+[connection signal="pressed" from="Background - Living Room/Resume Button" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="Background - Living Room/Quit Button" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Background - Living Room/Save Button" to="." method="_on_save_button_pressed"]

@@ -1,0 +1,91 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxq5t6ukmehtb"]
+
+[ext_resource type="Texture2D" uid="uid://d16tln5gsinwx" path="res://Art/Inventory - Transparent.png" id="1_a0mxf"]
+[ext_resource type="FontFile" uid="uid://cvcowfaoh1fy" path="res://Fonts/Atop-R99O3.ttf" id="2_2shtd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a0mxf"]
+bg_color = Color(0.996078, 0.964706, 0.890196, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.858824, 0.756863, 0.619608, 1)
+
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background - Shop Inventory" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 148.0
+offset_top = 476.0
+offset_right = 1051.0
+offset_bottom = 682.0
+texture = ExtResource("1_a0mxf")
+
+[node name="Strawberry Price" type="Label" parent="Background - Shop Inventory"]
+layout_mode = 0
+offset_left = 113.0
+offset_top = 60.0
+offset_right = 159.0
+offset_bottom = 105.0
+theme_override_colors/font_color = Color(0.443137, 0.262745, 0.807843, 1)
+theme_override_fonts/font = ExtResource("2_2shtd")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_a0mxf")
+text = "$5"
+horizontal_alignment = 1
+
+[node name="Cookie Price" type="Label" parent="Background - Shop Inventory"]
+layout_mode = 0
+offset_left = 221.0
+offset_top = 61.0
+offset_right = 274.0
+offset_bottom = 106.0
+theme_override_colors/font_color = Color(0.443137, 0.262745, 0.807843, 1)
+theme_override_fonts/font = ExtResource("2_2shtd")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_a0mxf")
+text = "$10"
+horizontal_alignment = 1
+
+[node name="Lettuce Price" type="Label" parent="Background - Shop Inventory"]
+layout_mode = 0
+offset_left = 330.0
+offset_top = 61.0
+offset_right = 388.0
+offset_bottom = 106.0
+theme_override_colors/font_color = Color(0.443137, 0.262745, 0.807843, 1)
+theme_override_fonts/font = ExtResource("2_2shtd")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_a0mxf")
+text = "$15"
+horizontal_alignment = 1
+
+[node name="Toilet Paper Price" type="Label" parent="Background - Shop Inventory"]
+layout_mode = 0
+offset_left = 560.0
+offset_top = 62.0
+offset_right = 618.0
+offset_bottom = 107.0
+theme_override_colors/font_color = Color(0.443137, 0.262745, 0.807843, 1)
+theme_override_fonts/font = ExtResource("2_2shtd")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_a0mxf")
+text = "$10"
+horizontal_alignment = 1
+
+[node name="Shower Sponge Price" type="Label" parent="Background - Shop Inventory"]
+layout_mode = 0
+offset_left = 790.0
+offset_top = 63.0
+offset_right = 848.0
+offset_bottom = 108.0
+theme_override_colors/font_color = Color(0.443137, 0.262745, 0.807843, 1)
+theme_override_fonts/font = ExtResource("2_2shtd")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_a0mxf")
+text = "$10"
+horizontal_alignment = 1
