@@ -77,6 +77,10 @@ func _on_timer_timeout() -> void:
 	cleanliness = max(0, cleanliness - DECAY_RATE)
 	# Bathroom begins to decay as well
 	bathroom = max(0, bathroom - DECAY_RATE)
+	emit_signal("hunger_changed", hunger)
+	emit_signal("bathroom_changed", bathroom)
+	emit_signal("shower_changed", cleanliness)
+	_check_pet_status()
 	
 # ALL PLAYER FUNCTIONS ########################################################
 # Feeding the pet
@@ -119,8 +123,10 @@ func _pet_die(reason: String):
 	# Possible instead of printing out on the console the pet died,
 	# It would print it out onto the screen. That can be for later 
 	print("Pet died because: ", reason, ".")
-	DirAccess.remove_absolute(save_path) # Deletes the save file
-	get_tree().paused = true # This pauses the game
+	# Deletes the save files
+	DirAccess.remove_absolute(save_path)
+	DirAccess.remove_absolute(Global.coin_save_path)
+	get_tree().quit()
 	# TOOD: Need to add a game over screen
 	# Possibly even a restart button
 
