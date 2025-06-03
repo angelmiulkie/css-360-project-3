@@ -35,6 +35,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_umkmc")
 text = "RESUME"
 
 [node name="Quit Button" type="Button" parent="Background - Living Room"]
+layout_mode = 0
 offset_left = 402.0
 offset_top = 452.0
 offset_right = 737.0
@@ -48,6 +49,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_umkmc")
 text = "QUIT"
 
 [node name="Save Button" type="Button" parent="Background - Living Room"]
+layout_mode = 0
 offset_left = 402.0
 offset_top = 314.0
 offset_right = 737.0
