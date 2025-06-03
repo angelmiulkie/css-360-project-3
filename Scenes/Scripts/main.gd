@@ -12,6 +12,8 @@ extends Node2D
 @onready var coin_label = $"Coins/Coins Label"
 const coin_save_path := "user://coins.save" # Saving the coins for each save
 var coins := 50
+var last_coin_time := 0
+
 
 # Assigning the shop to buy items
 @onready var shop_scene = preload("res://Scenes/shop.tscn")
@@ -21,26 +23,34 @@ var coins := 50
 
 func _ready():
 	var pet_node = $Pet
-	
 	pet_node.hunger_changed.connect(_on_hunger_changed)
-	
-	# For the coin timer to start
-	# And updating the coins
+
+	# Load and update coins (includes offline coin gain)
 	_load_coins()
 	_update_coin_label()
+
+	# Set coin timer interval based on mode
+	if Global.is_speedrun:
+		coin_timer.wait_time = 30.0
+	else:
+		coin_timer.wait_time = 300.0
+
+	# Start coin timer
 	coin_timer.timeout.connect(_on_coin_timer_timeout)
 	coin_timer.start()
-	# If the coins go less than 0
+
+	# If coins are at or below zero, reset label
 	if coins <= 0:
 		print("No More Coins Left!")
 		coins = 0
 		_update_coin_label()
-	
-	# For the saving function need to connect the signal
+
+	# Hook up pause screen save signal
 	var pause_screen = $"Pause Screen"
 	if pause_screen:
 		print("Connecting pause_screen save_requested signal")
 		pause_screen.connect("save_requested", Callable(self, "_save_game"))
+
 
 # To ensure that the hunger works 
 func _on_hunger_changed(new_value: int) -> void:
@@ -64,12 +74,32 @@ func _update_coin_label():
 func _save_coins():
 	var file = FileAccess.open(coin_save_path, FileAccess.WRITE)
 	file.store_var(coins)
+	file.store_var(Time.get_unix_time_from_system())
+
 
 # Then loading the coins once the game starts up
 func _load_coins():
 	if FileAccess.file_exists(coin_save_path):
 		var file = FileAccess.open(coin_save_path, FileAccess.READ)
 		coins = file.get_var(coins)
+		last_coin_time = file.get_var(last_coin_time)
+
+		# Set values based on mode (no ternary)
+		var coin_interval = 300
+		var coin_reward = 5
+		if Global.is_speedrun:
+			coin_interval = 30
+			coin_reward = 2
+
+		# Offline coin generation
+		var now = Time.get_unix_time_from_system()
+		var seconds_passed = now - last_coin_time
+		var coins_earned = int(seconds_passed / coin_interval) * coin_reward
+
+		if coins_earned > 0:
+			print("You earned", coins_earned, "coins while offline!")
+			coins += coins_earned
+
 
 # To check if there are any money left to spend
 func _no_more_coins():
