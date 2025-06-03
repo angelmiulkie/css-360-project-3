@@ -16,8 +16,13 @@ var coins := 50
 # Assigning the shop to buy items
 @onready var shop_scene = preload("res://Scenes/shop.tscn")
 
+# To ensure that the bars are updating once the game starts
+@onready var hunger_bar = $"Pet/Hunger Bar"
+
 func _ready():
 	var pet_node = $Pet
+	
+	pet_node.hunger_changed.connect(_on_hunger_changed)
 	
 	# For the coin timer to start
 	# And updating the coins
@@ -36,6 +41,11 @@ func _ready():
 	if pause_screen:
 		print("Connecting pause_screen save_requested signal")
 		pause_screen.connect("save_requested", Callable(self, "_save_game"))
+
+# To ensure that the hunger works 
+func _on_hunger_changed(new_value: int) -> void:
+	print("Updating bar to new value: ", new_value)
+	hunger_bar.value = new_value
 
 # COIN FUNCTIONS ###############################################################
 # Updating the coins after every 5 minutes, you get 5 coins
