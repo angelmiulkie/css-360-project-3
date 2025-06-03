@@ -23,7 +23,6 @@ offset_bottom = 40.0
 texture = ExtResource("1_i8r30")
 
 [node name="Title" type="TextureRect" parent="Images"]
-visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
