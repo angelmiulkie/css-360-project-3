@@ -26,3 +26,8 @@ window/size/viewport_width=1150
 window/size/viewport_height=750
 window/size/mode=3
 window/stretch/mode="viewport"
+
+[rendering]
+
+textures/vram_compression/import_s3tc_bptc=true
+textures/vram_compression/import_etc2_astc=true

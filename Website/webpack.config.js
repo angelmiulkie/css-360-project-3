@@ -9,6 +9,7 @@ module.exports = {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
     clean: true,
+    publicPath: './'
   },
   devtool: "eval-source-map",
   devServer: {
@@ -26,7 +27,8 @@ module.exports = {
     }),
      new CopyWebpackPlugin({
       patterns: [
-        { from: 'src/Game/Tacogotchi.zip', to: 'Game/Tacogotchi.zip' }
+        { from: 'src/Game/Tacogotchi.zip', to: 'Game/Tacogotchi.zip' },
+        { from: 'src/Game/Tacogotchi.dmg.zip', to: 'Game/Tacogotchi.dmg.zip' }
       ]
     })
   ],

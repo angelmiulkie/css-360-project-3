@@ -10,4 +10,4 @@ img.src = logo;
 img.alt = "Tacogotchi Logo";
 img.className = "logo"; // style it via CSS
 
-header.prepend(img);
+document.querySelector('header').prepend(img);

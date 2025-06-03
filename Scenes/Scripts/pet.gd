@@ -16,8 +16,10 @@ var bathroom := 100
 # When stats were last saved, in Unix time
 var last_save_time := 0
 
-# The location of the save file
-const save_path := "user://data.save"
+# Use different save files for each mode
+const normal_save := "user://data.save"
+const speedrun_save := "user://data_speedrun.save"
+var save_path := ""
 
 # These are to cap the max of the variables above
 var MAX_STAT = 100
@@ -36,6 +38,10 @@ var CRITICAL_LEVEL = 0
 # READY #######################################################################
 # this begins the timer when the scene begins 
 func _ready():
+	if Global.is_speedrun:
+		save_path = speedrun_save
+	else:
+		save_path = normal_save
 	# File Saving Mechanisms - Daniel!
 	if FileAccess.file_exists(save_path):
 		_load_stats() # loads existing save
@@ -68,6 +74,7 @@ func _ready():
 	print("Current Hunger:", hunger)
 	print("Current Bathroom:", bathroom)
 	print("Current Cleanliness:", cleanliness)
+	print("Decay Interval is:" , Global.decay_interval)
 
 # Once the game starts, this begins the decay automatically
 func _on_timer_timeout() -> void:
