@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   mode: "development",
@@ -23,6 +24,11 @@ module.exports = {
       template: "./src/tutorial.html",
       filename: "tutorial.html",
     }),
+     new CopyWebpackPlugin({
+      patterns: [
+        { from: 'src/Game/Tacogotchi.zip', to: 'Game/Tacogotchi.zip' }
+      ]
+    })
   ],
   module: {
     rules: [
