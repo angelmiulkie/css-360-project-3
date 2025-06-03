@@ -116,7 +116,7 @@ module.exports = __webpack_require__.p + "fd3cd5ef7bf83667c0d9.png";
   \***********************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles.css */ \"./src/styles.css\");\n/* harmony import */ var _assets_Title_Transparent_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./assets/Title-Transparent.png */ \"./src/assets/Title-Transparent.png\");\n\n\n\nconsole.log(\"Tacogotchi loaded!\");\n\n// Inject image at the top of header\nconst header = document.querySelector(\"header\");\nconst img = document.createElement(\"img\");\nimg.src = _assets_Title_Transparent_png__WEBPACK_IMPORTED_MODULE_1__;\nimg.alt = \"Tacogotchi Logo\";\nimg.className = \"logo\"; // style it via CSS\n\nheader.prepend(img);\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9zcmMvaW5kZXgubWpzIiwibWFwcGluZ3MiOiI7OztBQUFzQjtBQUM0Qjs7QUFFbEQ7O0FBRUE7QUFDQTtBQUNBO0FBQ0EsVUFBVSwwREFBSTtBQUNkO0FBQ0Esd0JBQXdCOztBQUV4QiIsInNvdXJjZXMiOlsid2VicGFjazovL3dlYnNpdGUvLi9zcmMvaW5kZXgubWpzP2E0MWIiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0ICcuL3N0eWxlcy5jc3MnO1xuaW1wb3J0IGxvZ28gZnJvbSAnLi9hc3NldHMvVGl0bGUtVHJhbnNwYXJlbnQucG5nJztcblxuY29uc29sZS5sb2coXCJUYWNvZ290Y2hpIGxvYWRlZCFcIik7XG5cbi8vIEluamVjdCBpbWFnZSBhdCB0aGUgdG9wIG9mIGhlYWRlclxuY29uc3QgaGVhZGVyID0gZG9jdW1lbnQucXVlcnlTZWxlY3RvcihcImhlYWRlclwiKTtcbmNvbnN0IGltZyA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJpbWdcIik7XG5pbWcuc3JjID0gbG9nbztcbmltZy5hbHQgPSBcIlRhY29nb3RjaGkgTG9nb1wiO1xuaW1nLmNsYXNzTmFtZSA9IFwibG9nb1wiOyAvLyBzdHlsZSBpdCB2aWEgQ1NTXG5cbmhlYWRlci5wcmVwZW5kKGltZyk7XG4iXSwibmFtZXMiOltdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./src/index.mjs\n");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles.css */ \"./src/styles.css\");\n/* harmony import */ var _assets_Title_Transparent_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./assets/Title-Transparent.png */ \"./src/assets/Title-Transparent.png\");\n\n\n\nconsole.log(\"Tacogotchi loaded!\");\n\n// Inject image at the top of header\nconst header = document.querySelector(\"header\");\nconst img = document.createElement(\"img\");\nimg.src = _assets_Title_Transparent_png__WEBPACK_IMPORTED_MODULE_1__;\nimg.alt = \"Tacogotchi Logo\";\nimg.className = \"logo\"; // style it via CSS\n\ndocument.querySelector('header').prepend(img);\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9zcmMvaW5kZXgubWpzIiwibWFwcGluZ3MiOiI7OztBQUFzQjtBQUM0Qjs7QUFFbEQ7O0FBRUE7QUFDQTtBQUNBO0FBQ0EsVUFBVSwwREFBSTtBQUNkO0FBQ0Esd0JBQXdCOztBQUV4QiIsInNvdXJjZXMiOlsid2VicGFjazovL3dlYnNpdGUvLi9zcmMvaW5kZXgubWpzP2E0MWIiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0ICcuL3N0eWxlcy5jc3MnO1xuaW1wb3J0IGxvZ28gZnJvbSAnLi9hc3NldHMvVGl0bGUtVHJhbnNwYXJlbnQucG5nJztcblxuY29uc29sZS5sb2coXCJUYWNvZ290Y2hpIGxvYWRlZCFcIik7XG5cbi8vIEluamVjdCBpbWFnZSBhdCB0aGUgdG9wIG9mIGhlYWRlclxuY29uc3QgaGVhZGVyID0gZG9jdW1lbnQucXVlcnlTZWxlY3RvcihcImhlYWRlclwiKTtcbmNvbnN0IGltZyA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJpbWdcIik7XG5pbWcuc3JjID0gbG9nbztcbmltZy5hbHQgPSBcIlRhY29nb3RjaGkgTG9nb1wiO1xuaW1nLmNsYXNzTmFtZSA9IFwibG9nb1wiOyAvLyBzdHlsZSBpdCB2aWEgQ1NTXG5cbmRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoJ2hlYWRlcicpLnByZXBlbmQoaW1nKTtcbiJdLCJuYW1lcyI6W10sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./src/index.mjs\n");
 
 /***/ }),
 
@@ -181,18 +181,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 		};
 /******/ 	})();
 /******/ 	
-/******/ 	/* webpack/runtime/global */
-/******/ 	(() => {
-/******/ 		__webpack_require__.g = (function() {
-/******/ 			if (typeof globalThis === 'object') return globalThis;
-/******/ 			try {
-/******/ 				return this || new Function('return this')();
-/******/ 			} catch (e) {
-/******/ 				if (typeof window === 'object') return window;
-/******/ 			}
-/******/ 		})();
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
@@ -211,25 +199,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	
 /******/ 	/* webpack/runtime/publicPath */
 /******/ 	(() => {
-/******/ 		var scriptUrl;
-/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
-/******/ 		var document = __webpack_require__.g.document;
-/******/ 		if (!scriptUrl && document) {
-/******/ 			if (document.currentScript && document.currentScript.tagName.toUpperCase() === 'SCRIPT')
-/******/ 				scriptUrl = document.currentScript.src;
-/******/ 			if (!scriptUrl) {
-/******/ 				var scripts = document.getElementsByTagName("script");
-/******/ 				if(scripts.length) {
-/******/ 					var i = scripts.length - 1;
-/******/ 					while (i > -1 && (!scriptUrl || !/^http(s?):/.test(scriptUrl))) scriptUrl = scripts[i--].src;
-/******/ 				}
-/******/ 			}
-/******/ 		}
-/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
-/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
-/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
-/******/ 		scriptUrl = scriptUrl.replace(/^blob:/, "").replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
-/******/ 		__webpack_require__.p = scriptUrl;
+/******/ 		__webpack_require__.p = "./";
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/nonce */
