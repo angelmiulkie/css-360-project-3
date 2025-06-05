@@ -210,7 +210,7 @@ expand_mode = 1
 script = ExtResource("14_wsu2k")
 
 [node name="Coin Timer" type="Timer" parent="."]
-wait_time = 30.0
+wait_time = 300.0
 autostart = true
 
 [node name="Coins" type="Control" parent="."]
