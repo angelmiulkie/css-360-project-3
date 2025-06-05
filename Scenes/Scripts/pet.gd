@@ -16,10 +16,9 @@ var bathroom := 100
 # When stats were last saved, in Unix time
 var last_save_time := 0
 
-# Use different save files for each mode
-const normal_save := "user://data.save"
-const speedrun_save := "user://data_speedrun.save"
+# Paths to save data, set in _ready() based on mode
 var save_path := ""
+var coin_path := ""
 
 # These are to cap the max of the variables above
 var MAX_STAT = 100
@@ -39,9 +38,11 @@ var CRITICAL_LEVEL = 0
 # this begins the timer when the scene begins 
 func _ready():
 	if Global.is_speedrun:
-		save_path = speedrun_save
+		save_path = Global.speedrun_save_path
+		coin_path = Global.speedrun_coin_save_path
 	else:
-		save_path = normal_save
+		save_path = Global.normal_save_path
+		coin_path = Global.normal_coin_save_path
 	# File Saving Mechanisms - Daniel!
 	if FileAccess.file_exists(save_path):
 		_load_stats() # loads existing save
@@ -132,7 +133,7 @@ func _pet_die(reason: String):
 	print("Pet died because: ", reason, ".")
 	# Deletes the save files
 	DirAccess.remove_absolute(save_path)
-	DirAccess.remove_absolute(Global.coin_save_path)
+	DirAccess.remove_absolute(coin_path)
 	get_tree().quit()
 	# TOOD: Need to add a game over screen
 	# Possibly even a restart button
