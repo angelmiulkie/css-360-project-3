@@ -60,10 +60,7 @@ func _ready():
 	add_child(funds_popup)
 
 
-<<<<<<< Updated upstream
-=======
 # SIGNAL FUNCTIONS! ############################################################
->>>>>>> Stashed changes
 # To ensure that the hunger works 
 func _on_hunger_changed(new_value: int) -> void:
 	print("Updating bar to new value: ", new_value)
