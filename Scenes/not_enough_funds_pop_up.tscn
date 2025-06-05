@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://bymt83yvok22w"]
+
+[ext_resource type="Script" uid="uid://b6bois1csg28k" path="res://Scenes/Scripts/not_enough_funds_pop_up.gd" id="1_cex76"]
+[ext_resource type="FontFile" uid="uid://cvcowfaoh1fy" path="res://Fonts/Atop-R99O3.ttf" id="1_ves78"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ves78"]
+bg_color = Color(0.996078, 0.964706, 0.890196, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.858824, 0.756863, 0.619608, 1)
+
+[node name="Not Enough Funds Pop Up" type="CanvasLayer"]
+script = ExtResource("1_cex76")
+
+[node name="Pop Up Label" type="Label" parent="."]
+visible = false
+offset_left = 386.0
+offset_top = 304.0
+offset_right = 778.0
+offset_bottom = 382.0
+theme_override_colors/font_color = Color(0.443137, 0.262745, 0.807843, 1)
+theme_override_fonts/font = ExtResource("1_ves78")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_ves78")
+text = "Not Enough Funds!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Fade Timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[connection signal="timeout" from="Fade Timer" to="." method="_on_fade_timer_timeout"]

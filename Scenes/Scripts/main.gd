@@ -21,6 +21,11 @@ var last_coin_time := 0
 # To ensure that the bars are updating once the game starts
 @onready var hunger_bar = $"Pet/Hunger Bar"
 
+# This is to make it so the funds pop up when they player doesn't have enough 
+# Funds to be able to buy an item 
+@onready var funds_popup = preload("res://Scenes/not_enough_funds_pop_up.tscn").instantiate()
+
+# READY ########################################################################
 func _ready():
 	var pet_node = $Pet
 	pet_node.hunger_changed.connect(_on_hunger_changed)
@@ -50,8 +55,15 @@ func _ready():
 	if pause_screen:
 		print("Connecting pause_screen save_requested signal")
 		pause_screen.connect("save_requested", Callable(self, "_save_game"))
+	
+	# This is for the funds pop up
+	add_child(funds_popup)
 
 
+<<<<<<< Updated upstream
+=======
+# SIGNAL FUNCTIONS! ############################################################
+>>>>>>> Stashed changes
 # To ensure that the hunger works 
 func _on_hunger_changed(new_value: int) -> void:
 	print("Updating bar to new value: ", new_value)
@@ -111,6 +123,10 @@ func _no_more_coins():
 	else:
 		return false
 
+# Checks to see if they can even afford the item
+func _can_afford(amount: int) -> bool:
+	return coins >= amount
+
 # Once the game closes, it should save the amount of coins
 func _notification(what: int):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
@@ -168,9 +184,15 @@ func _on_shop_inventory_x_pressed() -> void:
 # Once the strawberry buy button is pressed
 func _on_strawberry_buy_button_pressed() -> void:
 	# Subtract how much the strawberry is
-	coins = coins - 5
-	_update_coin_label() # Update the coin label
+	var cost = 5
+	if _can_afford(cost):
+		coins = coins - cost
+		_update_coin_label()
+	else: 
+		funds_popup._show_message("Not Enough Funds!")
 	# $"Shop/Strawberry".visible = false # Setting the shop strawberry to invisible
+	
+	# Now checking if they have any coins at all
 	_no_more_coins()
 	if _no_more_coins() == true:
 		$"Inventory Panel/Strawberry".visible = false
@@ -180,8 +202,14 @@ func _on_strawberry_buy_button_pressed() -> void:
 
 # Once the cookie buy button has been pressed
 func _on_cookie_buy_button_pressed() -> void:
-	coins = coins - 10
-	_update_coin_label()
+	var cost = 10
+	if _can_afford(cost):
+		coins = coins - cost
+		_update_coin_label()
+	else: 
+		funds_popup._show_message("Not Enough Funds!")
+	
+	# Now checking if they have any coins at all
 	_no_more_coins()
 	if _no_more_coins() == true:
 		$"Inventory Panel/Cookie".visible = false
@@ -191,8 +219,14 @@ func _on_cookie_buy_button_pressed() -> void:
 
 # Once the lettuce buy button has been pressed
 func _on_lettuce_buy_button_pressed() -> void:
-	coins = coins - 15
-	_update_coin_label()
+	var cost = 15
+	if _can_afford(cost):
+		coins = coins - cost
+		_update_coin_label()
+	else: 
+		funds_popup._show_message("Not Enough Funds!")
+	
+	# Now checking if they have any coins at all
 	_no_more_coins()
 	if _no_more_coins() == true:
 		$"Inventory Panel/Lettuce".visible = false
@@ -202,8 +236,14 @@ func _on_lettuce_buy_button_pressed() -> void:
 
 # Once the toilet paper button has been pressed
 func _on_toilet_paper_buy_button_pressed() -> void:
-	coins = coins - 10
-	_update_coin_label()
+	var cost = 10
+	if _can_afford(cost):
+		coins = coins - cost
+		_update_coin_label()
+	else: 
+		funds_popup._show_message("Not Enough Funds!")
+	
+	# Now checking if they have any coins at all
 	_no_more_coins()
 	if _no_more_coins() == true:
 		$"Bathroom Inventory Panel/Toilet Paper".visible = false
@@ -213,8 +253,14 @@ func _on_toilet_paper_buy_button_pressed() -> void:
 
 # Once the shower sponge button has been pressed
 func _on_shower_sponge_buy_button_pressed() -> void:
-	coins = coins - 10
-	_update_coin_label()
+	var cost = 10
+	if _can_afford(cost):
+		coins = coins - cost
+		_update_coin_label()
+	else: 
+		funds_popup._show_message("Not Enough Funds!")
+	
+	# Now checking if they have any coins at all
 	_no_more_coins()
 	if _no_more_coins() == true:
 		$"Shower Inventory Panel/Shower Sponge".visible = false
