@@ -90,8 +90,22 @@ func _save_coins():
 func _load_coins():
 	if FileAccess.file_exists(coin_save_path):
 		var file = FileAccess.open(coin_save_path, FileAccess.READ)
-		coins = file.get_var(coins)
-		last_coin_time = file.get_var(last_coin_time)
+		
+		# If the file is corrupted
+		if file.eof_reached():
+			coins = 50 # Default coins
+			last_coin_time = 0
+			return
+		
+		coins = file.get_var()
+		if file.eof_reached():
+			last_coin_time = 0
+		else:
+			var maybe_time = file.get_var()
+			if maybe_time == null:
+				last_coin_time = 0
+			else:
+				last_coin_time = maybe_time
 
 		# Set values based on mode (no ternary)
 		var coin_interval = 300
