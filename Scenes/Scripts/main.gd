@@ -10,7 +10,7 @@ extends Node2D
 # Assinging the timer for money/coins
 @onready var coin_timer = $"Coin Timer"
 @onready var coin_label = $"Coins/Coins Label"
-const coin_save_path := "user://coins.save" # Saving the coins for each save
+var coin_save_path = "" # Saving the coins for each save
 var coins := 50
 var last_coin_time := 0
 
@@ -22,6 +22,11 @@ var last_coin_time := 0
 @onready var hunger_bar = $"Pet/Hunger Bar"
 
 func _ready():
+	if Global.is_speedrun:
+		coin_save_path = Global.speedrun_coin_save_path
+	else:
+		coin_save_path = Global.normal_coin_save_path
+	
 	var pet_node = $Pet
 	pet_node.hunger_changed.connect(_on_hunger_changed)
 
