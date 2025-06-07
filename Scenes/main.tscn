@@ -241,6 +241,7 @@ offset_bottom = 104.0
 texture = ExtResource("15_wsu2k")
 
 [node name="Shop" parent="." instance=ExtResource("18_fevyy")]
+visible = false
 script = ExtResource("19_fevyy")
 
 [node name="Shop Inventory X" type="TextureButton" parent="Shop"]

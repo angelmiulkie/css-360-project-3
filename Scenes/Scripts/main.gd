@@ -204,16 +204,13 @@ func _on_strawberry_buy_button_pressed() -> void:
 	if _can_afford(cost):
 		coins = coins - cost
 		_update_coin_label()
+		# Adds item to inventory
+		$"Inventory Panel/Strawberry".visible = true
 	else: 
 		funds_popup._show_message("Not Enough Funds!")
-	# $"Shop/Strawberry".visible = false # Setting the shop strawberry to invisible
 	
-	# Now checking if they have any coins at all
+	# Update coins
 	_no_more_coins()
-	if _no_more_coins() == true:
-		$"Inventory Panel/Strawberry".visible = false
-	else: 
-		$"Inventory Panel/Strawberry".visible = true # Putting back the original strawberry
 	_save_coins()
 
 # Once the cookie buy button has been pressed
@@ -222,15 +219,13 @@ func _on_cookie_buy_button_pressed() -> void:
 	if _can_afford(cost):
 		coins = coins - cost
 		_update_coin_label()
+		# Adds item to inventory
+		$"Inventory Panel/Cookie".visible = true
 	else: 
 		funds_popup._show_message("Not Enough Funds!")
 	
-	# Now checking if they have any coins at all
+	# Update coins
 	_no_more_coins()
-	if _no_more_coins() == true:
-		$"Inventory Panel/Cookie".visible = false
-	else: 
-		$"Inventory Panel/Cookie".visible = true
 	_save_coins()
 
 # Once the lettuce buy button has been pressed
@@ -239,15 +234,13 @@ func _on_lettuce_buy_button_pressed() -> void:
 	if _can_afford(cost):
 		coins = coins - cost
 		_update_coin_label()
+		# Adds item to inventory
+		$"Inventory Panel/Lettuce".visible = true
 	else: 
 		funds_popup._show_message("Not Enough Funds!")
 	
-	# Now checking if they have any coins at all
+	# Update coins
 	_no_more_coins()
-	if _no_more_coins() == true:
-		$"Inventory Panel/Lettuce".visible = false
-	else: 
-		$"Inventory Panel/Lettuce".visible = true
 	_save_coins()
 
 # Once the toilet paper button has been pressed
@@ -256,15 +249,13 @@ func _on_toilet_paper_buy_button_pressed() -> void:
 	if _can_afford(cost):
 		coins = coins - cost
 		_update_coin_label()
+		# Adds item to inventory
+		$"Bathroom Inventory Panel/Toilet Paper".visible = true
 	else: 
 		funds_popup._show_message("Not Enough Funds!")
 	
-	# Now checking if they have any coins at all
+	# Update coins
 	_no_more_coins()
-	if _no_more_coins() == true:
-		$"Bathroom Inventory Panel/Toilet Paper".visible = false
-	else: 
-		$"Bathroom Inventory Panel/Toilet Paper".visible = true
 	_save_coins()
 
 # Once the shower sponge button has been pressed
@@ -273,15 +264,13 @@ func _on_shower_sponge_buy_button_pressed() -> void:
 	if _can_afford(cost):
 		coins = coins - cost
 		_update_coin_label()
+		# Adds item to inventory
+		$"Shower Inventory Panel/Shower Sponge".visible = true
 	else: 
 		funds_popup._show_message("Not Enough Funds!")
 	
-	# Now checking if they have any coins at all
+	# Update coins
 	_no_more_coins()
-	if _no_more_coins() == true:
-		$"Shower Inventory Panel/Shower Sponge".visible = false
-	else: 
-		$"Shower Inventory Panel/Shower Sponge".visible = true
 	_save_coins()
 
 # If the home icon is pressed, the pause screen menu will come up
