@@ -1,5 +1,12 @@
 extends Node2D
 
+@onready var game_over_screen = get_node("GameOverScreen")
+
+func _ready():
+	if Global.game_over:
+		$"GameOverScreen".visible = true
+		Global.game_over = false
+
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
 

@@ -137,7 +137,10 @@ func _pet_die(reason: String):
 	DirAccess.remove_absolute(save_path)
 	DirAccess.remove_absolute(coin_path)
 	DirAccess.remove_absolute(inventory_path)
-	get_tree().change_scene_to_file("res://Scenes/game_over_screen.tscn")
+	
+	# Goes to game over screen (within start screen scene)
+	Global.game_over = true
+	get_tree().change_scene_to_file("res://Scenes/start_screen.tscn")
 
 # This is for testing
 # Printing out the stats so we can keep track or debug

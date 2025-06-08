@@ -10,3 +10,5 @@ const speedrun_coin_save_path := "user://coins_speedrun.save"
 const normal_inventory_save_path := "user://inventory.save"
 const speedrun_inventory_save_path := "user://inventory_speedrun.save"
 var is_speedrun := false
+
+var game_over := false
