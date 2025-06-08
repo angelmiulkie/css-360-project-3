@@ -62,13 +62,11 @@ func _ready():
 	# since the last save was made
 	var cur_time = Time.get_unix_time_from_system()
 	var num_intervals = int((cur_time - last_save_time) / Global.decay_interval)
-	if DECAY_RATE * num_intervals > MAX_STAT:
-		# Pet must have died by now
-		_pet_die("Too Hungry")
-	else:
-		# Skip ahead for time passed since last session
-		for i in range(num_intervals):
-			_on_timer_timeout()
+	# Skip ahead for time passed since last session
+	for i in range(num_intervals):
+		_on_timer_timeout()
+		if not FileAccess.file_exists(save_path):
+			break # Pet has died
 	
 	# Starts the timer
 	decay_timer.wait_time = Global.decay_interval

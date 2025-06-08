@@ -14,6 +14,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Background" type="TextureRect" parent="Images"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("2_y8man")
@@ -32,6 +33,7 @@ offset_right = 1076.0
 offset_bottom = 406.0
 
 [node name="Message" type="RichTextLabel" parent="Text Box"]
+layout_mode = 0
 offset_left = 73.0
 offset_top = 121.0
 offset_right = 1074.0
