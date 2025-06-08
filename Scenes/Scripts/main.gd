@@ -164,8 +164,6 @@ func _on_food_icon_button_pressed() -> void:
 func _on_inventory_x_button_pressed() -> void:
 	inventory_panel.visible = false
 	$"Action Buttons".visible = true
-	# Not the best fix, but should work
-	_save_inventory()
 
 # If the Bathroom Icon is pressed then it'll make the bathroom inventory
 # visible and all the other buttons invisible
@@ -286,7 +284,6 @@ func _on_shower_sponge_buy_button_pressed() -> void:
 
 # If the home icon is pressed, the pause screen menu will come up
 func _on_home_icon_button_pressed() -> void:
-	print($"Inventory Panel/Strawberry".visible)
 	$"Pause Screen".visible = true
 
 # Saves inventory contents
@@ -301,11 +298,11 @@ func _save_inventory():
 func _load_inventory():
 	if FileAccess.file_exists(inventory_save_path):
 		var file = FileAccess.open(inventory_save_path, FileAccess.READ)
-		file.get_var($"Inventory Panel/Strawberry".visible)
-		file.get_var($"Inventory Panel/Cookie".visible)
-		file.get_var($"Inventory Panel/Lettuce".visible)
-		file.get_var($"Bathroom Inventory Panel/Toilet Paper".visible)
-		file.get_var($"Shower Inventory Panel/Shower Sponge".visible)
+		$"Inventory Panel/Strawberry".visible = file.get_var($"Inventory Panel/Strawberry".visible)
+		$"Inventory Panel/Cookie".visible = file.get_var($"Inventory Panel/Cookie".visible)
+		$"Inventory Panel/Lettuce".visible = file.get_var($"Inventory Panel/Lettuce".visible)
+		$"Bathroom Inventory Panel/Toilet Paper".visible = file.get_var($"Bathroom Inventory Panel/Toilet Paper".visible)
+		$"Shower Inventory Panel/Shower Sponge".visible = file.get_var($"Shower Inventory Panel/Shower Sponge".visible)
 
 # Creating a save function that saves everything
 func _save_game():
