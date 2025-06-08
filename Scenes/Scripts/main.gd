@@ -33,7 +33,7 @@ func _ready():
 		inventory_save_path = Global.speedrun_inventory_save_path
 	else:
 		coin_save_path = Global.normal_coin_save_path
-		inventory_panel = Global.normal_inventory_save_path
+		inventory_save_path = Global.normal_inventory_save_path
 	
 	var pet_node = $Pet
 	pet_node.hunger_changed.connect(_on_hunger_changed)
