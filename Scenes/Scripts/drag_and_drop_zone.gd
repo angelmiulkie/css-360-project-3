@@ -54,3 +54,6 @@ func _drop_data(position, data) -> void:
 			# Hiding the sponge after it's been used
 			if data.has("Source Node"):
 				data["Source Node"].hide()
+		
+		
+		get_parent().get_parent().get_parent()._save_inventory()

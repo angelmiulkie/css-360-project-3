@@ -19,6 +19,7 @@ var last_save_time := 0
 # Paths to save data, set in _ready() based on mode
 var save_path := ""
 var coin_path := ""
+var inventory_path := ""
 
 # These are to cap the max of the variables above
 var MAX_STAT = 100
@@ -40,9 +41,11 @@ func _ready():
 	if Global.is_speedrun:
 		save_path = Global.speedrun_save_path
 		coin_path = Global.speedrun_coin_save_path
+		inventory_path = Global.speedrun_inventory_save_path
 	else:
 		save_path = Global.normal_save_path
 		coin_path = Global.normal_coin_save_path
+		inventory_path = Global.normal_inventory_save_path
 	# File Saving Mechanisms - Daniel!
 	if FileAccess.file_exists(save_path):
 		_load_stats() # loads existing save
@@ -134,6 +137,7 @@ func _pet_die(reason: String):
 	# Deletes the save files
 	DirAccess.remove_absolute(save_path)
 	DirAccess.remove_absolute(coin_path)
+	DirAccess.remove_absolute(inventory_path)
 	get_tree().quit()
 	# TOOD: Need to add a game over screen
 	# Possibly even a restart button

@@ -5,6 +5,7 @@ extends TextureRect
 var food_value = 10
 var food_name = "Strawberry"
 
+
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		grab_click_focus()

@@ -7,4 +7,6 @@ const normal_save_path := "user://data.save"
 const speedrun_save_path := "user://data_speedrun.save"
 const normal_coin_save_path := "user://coins.save"
 const speedrun_coin_save_path := "user://coins_speedrun.save"
+const normal_inventory_save_path := "user://inventory.save"
+const speedrun_inventory_save_path := "user://inventory.speedrun.save"
 var is_speedrun := false

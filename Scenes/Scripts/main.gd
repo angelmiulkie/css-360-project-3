@@ -11,6 +11,7 @@ extends Node2D
 @onready var coin_timer = $"Coin Timer"
 @onready var coin_label = $"Coins/Coins Label"
 var coin_save_path = "" # Saving the coins for each save
+var inventory_save_path = "" # Saves contents of inventory
 var coins := 50
 var last_coin_time := 0
 
@@ -29,13 +30,16 @@ var last_coin_time := 0
 func _ready():
 	if Global.is_speedrun:
 		coin_save_path = Global.speedrun_coin_save_path
+		inventory_save_path = Global.speedrun_inventory_save_path
 	else:
 		coin_save_path = Global.normal_coin_save_path
+		inventory_panel = Global.normal_inventory_save_path
 	
 	var pet_node = $Pet
 	pet_node.hunger_changed.connect(_on_hunger_changed)
 
-	# Load and update coins (includes offline coin gain)
+	# Load and update inventory and coins (includes offline coin gain)
+	_load_inventory()
 	_load_coins()
 	_update_coin_label()
 
@@ -160,6 +164,8 @@ func _on_food_icon_button_pressed() -> void:
 func _on_inventory_x_button_pressed() -> void:
 	inventory_panel.visible = false
 	$"Action Buttons".visible = true
+	# Not the best fix, but should work
+	_save_inventory()
 
 # If the Bathroom Icon is pressed then it'll make the bathroom inventory
 # visible and all the other buttons invisible
@@ -209,7 +215,8 @@ func _on_strawberry_buy_button_pressed() -> void:
 	else: 
 		funds_popup._show_message("Not Enough Funds!")
 	
-	# Update coins
+	# Update inventory and coins
+	_save_inventory()
 	_no_more_coins()
 	_save_coins()
 
@@ -224,7 +231,8 @@ func _on_cookie_buy_button_pressed() -> void:
 	else: 
 		funds_popup._show_message("Not Enough Funds!")
 	
-	# Update coins
+	# Update inventory and coins
+	_save_inventory()
 	_no_more_coins()
 	_save_coins()
 
@@ -239,7 +247,8 @@ func _on_lettuce_buy_button_pressed() -> void:
 	else: 
 		funds_popup._show_message("Not Enough Funds!")
 	
-	# Update coins
+	# Update inventory and coins
+	_save_inventory()
 	_no_more_coins()
 	_save_coins()
 
@@ -254,7 +263,8 @@ func _on_toilet_paper_buy_button_pressed() -> void:
 	else: 
 		funds_popup._show_message("Not Enough Funds!")
 	
-	# Update coins
+	# Update inventory and coins
+	_save_inventory()
 	_no_more_coins()
 	_save_coins()
 
@@ -269,17 +279,38 @@ func _on_shower_sponge_buy_button_pressed() -> void:
 	else: 
 		funds_popup._show_message("Not Enough Funds!")
 	
-	# Update coins
+	# Update inventory and coins
+	_save_inventory()
 	_no_more_coins()
 	_save_coins()
 
 # If the home icon is pressed, the pause screen menu will come up
 func _on_home_icon_button_pressed() -> void:
+	print($"Inventory Panel/Strawberry".visible)
 	$"Pause Screen".visible = true
+
+# Saves inventory contents
+func _save_inventory():
+	var file = FileAccess.open(inventory_save_path, FileAccess.WRITE)
+	file.store_var($"Inventory Panel/Strawberry".visible)
+	file.store_var($"Inventory Panel/Cookie".visible)
+	file.store_var($"Inventory Panel/Lettuce".visible)
+	file.store_var($"Bathroom Inventory Panel/Toilet Paper".visible)
+	file.store_var($"Shower Inventory Panel/Shower Sponge".visible)
+
+func _load_inventory():
+	if FileAccess.file_exists(inventory_save_path):
+		var file = FileAccess.open(inventory_save_path, FileAccess.READ)
+		file.get_var($"Inventory Panel/Strawberry".visible)
+		file.get_var($"Inventory Panel/Cookie".visible)
+		file.get_var($"Inventory Panel/Lettuce".visible)
+		file.get_var($"Bathroom Inventory Panel/Toilet Paper".visible)
+		file.get_var($"Shower Inventory Panel/Shower Sponge".visible)
 
 # Creating a save function that saves everything
 func _save_game():
 	print("Entered game save")
 	_save_coins()
+	_save_inventory()
 	$Pet._save_stats()
 	print("Game Saved!")

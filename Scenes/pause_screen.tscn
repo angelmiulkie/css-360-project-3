@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c16e600gjkxpw"]
 
-[ext_resource type="Script" uid="uid://dldu5qn5s1rqb" path="res://Scenes/Scripts/pause_screen.gd" id="1_hl5t3"]
+[ext_resource type="Script" uid="uid://cpxmeoe85jelt" path="res://Scenes/Scripts/pause_screen.gd" id="1_hl5t3"]
 [ext_resource type="Texture2D" uid="uid://y3ykymapx1a5" path="res://Art/StartScreen/BlurredScreen.png" id="2_16tsp"]
 [ext_resource type="FontFile" uid="uid://cvcowfaoh1fy" path="res://Fonts/Atop-R99O3.ttf" id="3_orahx"]
 
