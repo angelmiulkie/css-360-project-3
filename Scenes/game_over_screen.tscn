@@ -18,12 +18,24 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("2_y8man")
 
-[node name="Message" type="RichTextLabel" parent="."]
-offset_left = 75.0
-offset_top = 121.0
+[node name="Text Box" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Box" type="Panel" parent="Text Box"]
+layout_mode = 0
+offset_left = 78.0
+offset_top = 79.0
 offset_right = 1076.0
-offset_bottom = 423.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
+offset_bottom = 406.0
+
+[node name="Message" type="RichTextLabel" parent="Text Box"]
+offset_left = 73.0
+offset_top = 121.0
+offset_right = 1074.0
+offset_bottom = 384.0
 theme_override_font_sizes/normal_font_size = 56
 text = "Your taco cat died.
 If you wish, you can resurrect it by cooking it a new body!"
