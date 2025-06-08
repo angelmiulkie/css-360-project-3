@@ -66,6 +66,7 @@ func _ready():
 	for i in range(num_intervals):
 		_on_timer_timeout()
 		if not FileAccess.file_exists(save_path):
+			_check_pet_status()
 			break # Pet has died
 	
 	# Starts the timer
