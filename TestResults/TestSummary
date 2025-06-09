@@ -1,1 +1,39 @@
+# Completed Tests
 
+## P0:
+### Game Must Have a Save File - Recent Test: 6/8/25
+We had tested to see if we had spent some money, spent on items taking care of the pet, and then saved and then left. We can back and then checked to see if it was all the same as we left it. It was.
+
+### Time to Track How the Pet's Status is Affected by Time Away - Recent Test: 6/8/25
+We had tested to see if we were away for prolonged periods of time, would the health bars deplete. They did deplete and if we were away for way too long, it had died. We returned to a game over screen if left for too long.
+
+### Pet's Food, Bathroom, and Clean Status - Recent Test: 6/8/25
+We tested to see if the bars would deteriote, and they did. They updated in real time. We then fed the pet and used bathroom items on the pet and the health bars would increase in real time. 
+
+### The User Must Take Care of the Pet by Feeding, Washing, and Bathroom - Recent Test: 6/8/25
+We dragged and drop different items to feed it, wash it, and let it go to the bathroom. The health bars would increase once we took care of it, and if we didn't take care of it and all the health bars would deplete, it died.
+
+### The User Must Use their Mouse to Interact with Game UI - Recent Test: 6/8/25
+The drag and drop function still works by dragging all the items to the pet and having it react to each specific item. You can click on the buttons available as well.
+
+## P1:
+### Items in Inventory - Recent Test: 6/8/25
+If yuo click on the inventory button for the food and bathroom/shower items, the inventory will pop up with each item that pertains to the inventory. All the necessary buttons work.
+
+### Number of Coins - Recent Test: 6/8/25
+The coins increase when offline and they increase while playing. You can spend the coins on items and if you don't have enough funds, then they won't allow you to buy it. And if you don't have any money, then you can't buy anything. The timer for the coins work and every 5 minutes you will earn 5 coins while online and offline. 
+
+### The User Will Earn Coins While Playing - Recent Test: 6/8/25
+If you just idle the game and have the application pulled up, every 5 minutes, it will give you 5 coins. The timer works.
+
+### A Shop to Spend Coins - Recent Test: 6/8/25
+The shop button works and will pop up with the shop. If you don't have enough money to buy things, it will not allow you to buy the item. If you have zero, the money won't guy below zero if you try to buy something. Your coins will decrease if you spent money. The buy buttons are now more visible.
+
+### Buy Food to Feed Pet - Recent Test: 6/8/25
+The buy button works, the coin system works. I spent my strawberry feeding the pet, if I buy the strwaberry in the shop and I have profeccient money, it will reappear in my inventory. 
+
+### The Pet will Die After Low Stats - Recent Test: 6/8/25
+If you let the pets stats go too low, it will pass away and the game over screen will appear. If the pet dies while the player is offline, then the game over screen will appear the next time the player opens the application. 
+
+### Buying Multiple Items - Recent Test: 6/8/25
+You can only now buy one singular item at a time. If you try to multiple, it will not appear in the inventory and the money will not be spent. 
