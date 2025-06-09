@@ -1,5 +1,7 @@
 extends Node2D
 
+const ANIMATION_TIME := 2.0
+
 # Emitting singals for hunger
 signal hunger_changed(new_hunger)
 # Emitting signals for bathroom
@@ -107,6 +109,10 @@ func _feed(amount: int) -> void:
 	# TODO: create an animation that shows the pet eating
 	emit_signal("hunger_changed", hunger)
 	_check_pet_status()
+	$"Animation Images/Happy Tacocat".visible = true
+	var timer: SceneTreeTimer = get_tree().create_timer(ANIMATION_TIME)
+	await timer.timeout
+	$"Animation Images/Happy Tacocat".visible = false
 
 # Letting the pet go to the bathroom
 func _go_bathroom(amount: int) -> void:
@@ -115,6 +121,10 @@ func _go_bathroom(amount: int) -> void:
 	# TODO: create an animation that shows the pet going to bathroom
 	emit_signal("bathroom_changed", bathroom)
 	_check_pet_status()
+	$"Animation Images/Happy Tacocat".visible = true
+	var timer: SceneTreeTimer = get_tree().create_timer(ANIMATION_TIME)
+	await timer.timeout
+	$"Animation Images/Happy Tacocat".visible = false
 
 func _go_shower(amount: int) -> void:
 	cleanliness = min(MAX_STAT, cleanliness + amount)
@@ -122,6 +132,10 @@ func _go_shower(amount: int) -> void:
 	#TODO: create an animation that shows the pet showering
 	emit_signal("shower_changed", cleanliness)
 	_check_pet_status()
+	$"Animation Images/Bubbly Tacocat".visible = true
+	var timer: SceneTreeTimer = get_tree().create_timer(ANIMATION_TIME)
+	await timer.timeout
+	$"Animation Images/Bubbly Tacocat".visible = false
 
 # PET CHECKS ##################################################################
 # This checks the stats if they get too low
