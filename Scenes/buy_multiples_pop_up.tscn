@@ -1,7 +1,14 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=5 format=3 uid="uid://bqj2saqax75r4"]
 
 [ext_resource type="Script" uid="uid://b2lhko072capa" path="res://Scenes/Scripts/buy_multiples_pop_up.gd" id="1_eyvyc"]
 [ext_resource type="Theme" uid="uid://dpc10cuvu0l1l" path="res://Scenes/Themes/pop_ups.tres" id="2_5fwi5"]
+=======
+[gd_scene load_steps=5 format=3 uid="uid://cyodf3dnj5l5u"]
+
+[ext_resource type="Script" uid="uid://b2lhko072capa" path="res://Scenes/Scripts/buy_multiples_pop_up.gd" id="1_eyvyc"]
+[ext_resource type="Theme" path="res://Scenes/Themes/pop_ups.tres" id="2_5fwi5"]
+>>>>>>> Stashed changes
 [ext_resource type="FontFile" uid="uid://cvcowfaoh1fy" path="res://Fonts/Atop-R99O3.ttf" id="3_r7m61"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rsb4m"]
