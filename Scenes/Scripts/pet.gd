@@ -66,9 +66,15 @@ func _ready():
 		# Pet must have died by now
 		_pet_die("Too Hungry")
 	else:
-		# Skip ahead for time passed since last session
-		for i in range(num_intervals):
-			_on_timer_timeout()
+		# Advance stats for time passed since last session
+		# (Previously, loop and function were causing lag. Use math instead!)
+		hunger = max(0, hunger - DECAY_RATE * num_intervals)
+		cleanliness = max(0, cleanliness - DECAY_RATE * num_intervals)
+		bathroom = max(0, bathroom - DECAY_RATE * num_intervals)
+		emit_signal("hunger_changed", hunger)
+		emit_signal("bathroom_changed", bathroom)
+		emit_signal("shower_changed", cleanliness)
+		_check_pet_status()
 	
 	# Starts the timer
 	decay_timer.wait_time = Global.decay_interval
