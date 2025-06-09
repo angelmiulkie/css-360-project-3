@@ -1,1 +1,5 @@
+# Known Issues
 
+## P1:
+# Buying Multiple Items Label
+We made it so that players canoot buy more than one item, however, there is not a label telling the user that. Although the function is implemented, there's no label letting the player know.
