@@ -10,7 +10,8 @@ extends Node2D
 # Assinging the timer for money/coins
 @onready var coin_timer = $"Coin Timer"
 @onready var coin_label = $"Coins/Coins Label"
-const coin_save_path := "user://coins.save" # Saving the coins for each save
+var coin_save_path = "" # Saving the coins for each save
+var inventory_save_path = "" # Saves contents of inventory
 var coins := 50
 var last_coin_time := 0
 
@@ -27,10 +28,18 @@ var last_coin_time := 0
 
 # READY ########################################################################
 func _ready():
+	if Global.is_speedrun:
+		coin_save_path = Global.speedrun_coin_save_path
+		inventory_save_path = Global.speedrun_inventory_save_path
+	else:
+		coin_save_path = Global.normal_coin_save_path
+		inventory_save_path = Global.normal_inventory_save_path
+	
 	var pet_node = $Pet
 	pet_node.hunger_changed.connect(_on_hunger_changed)
 
-	# Load and update coins (includes offline coin gain)
+	# Load and update inventory and coins (includes offline coin gain)
+	_load_inventory()
 	_load_coins()
 	_update_coin_label()
 
@@ -60,10 +69,7 @@ func _ready():
 	add_child(funds_popup)
 
 
-<<<<<<< Updated upstream
-=======
 # SIGNAL FUNCTIONS! ############################################################
->>>>>>> Stashed changes
 # To ensure that the hunger works 
 func _on_hunger_changed(new_value: int) -> void:
 	print("Updating bar to new value: ", new_value)
@@ -93,8 +99,22 @@ func _save_coins():
 func _load_coins():
 	if FileAccess.file_exists(coin_save_path):
 		var file = FileAccess.open(coin_save_path, FileAccess.READ)
-		coins = file.get_var(coins)
-		last_coin_time = file.get_var(last_coin_time)
+		
+		# If the file is corrupted
+		if file.eof_reached():
+			coins = 50 # Default coins
+			last_coin_time = 0
+			return
+		
+		coins = file.get_var()
+		if file.eof_reached():
+			last_coin_time = 0
+		else:
+			var maybe_time = file.get_var()
+			if maybe_time == null:
+				last_coin_time = 0
+			else:
+				last_coin_time = maybe_time
 
 		# Set values based on mode (no ternary)
 		var coin_interval = 300
@@ -188,16 +208,14 @@ func _on_strawberry_buy_button_pressed() -> void:
 	if _can_afford(cost):
 		coins = coins - cost
 		_update_coin_label()
+		# Adds item to inventory
+		$"Inventory Panel/Strawberry".visible = true
 	else: 
 		funds_popup._show_message("Not Enough Funds!")
-	# $"Shop/Strawberry".visible = false # Setting the shop strawberry to invisible
 	
-	# Now checking if they have any coins at all
+	# Update inventory and coins
+	_save_inventory()
 	_no_more_coins()
-	if _no_more_coins() == true:
-		$"Inventory Panel/Strawberry".visible = false
-	else: 
-		$"Inventory Panel/Strawberry".visible = true # Putting back the original strawberry
 	_save_coins()
 
 # Once the cookie buy button has been pressed
@@ -206,15 +224,14 @@ func _on_cookie_buy_button_pressed() -> void:
 	if _can_afford(cost):
 		coins = coins - cost
 		_update_coin_label()
+		# Adds item to inventory
+		$"Inventory Panel/Cookie".visible = true
 	else: 
 		funds_popup._show_message("Not Enough Funds!")
 	
-	# Now checking if they have any coins at all
+	# Update inventory and coins
+	_save_inventory()
 	_no_more_coins()
-	if _no_more_coins() == true:
-		$"Inventory Panel/Cookie".visible = false
-	else: 
-		$"Inventory Panel/Cookie".visible = true
 	_save_coins()
 
 # Once the lettuce buy button has been pressed
@@ -223,15 +240,14 @@ func _on_lettuce_buy_button_pressed() -> void:
 	if _can_afford(cost):
 		coins = coins - cost
 		_update_coin_label()
+		# Adds item to inventory
+		$"Inventory Panel/Lettuce".visible = true
 	else: 
 		funds_popup._show_message("Not Enough Funds!")
 	
-	# Now checking if they have any coins at all
+	# Update inventory and coins
+	_save_inventory()
 	_no_more_coins()
-	if _no_more_coins() == true:
-		$"Inventory Panel/Lettuce".visible = false
-	else: 
-		$"Inventory Panel/Lettuce".visible = true
 	_save_coins()
 
 # Once the toilet paper button has been pressed
@@ -240,15 +256,14 @@ func _on_toilet_paper_buy_button_pressed() -> void:
 	if _can_afford(cost):
 		coins = coins - cost
 		_update_coin_label()
+		# Adds item to inventory
+		$"Bathroom Inventory Panel/Toilet Paper".visible = true
 	else: 
 		funds_popup._show_message("Not Enough Funds!")
 	
-	# Now checking if they have any coins at all
+	# Update inventory and coins
+	_save_inventory()
 	_no_more_coins()
-	if _no_more_coins() == true:
-		$"Bathroom Inventory Panel/Toilet Paper".visible = false
-	else: 
-		$"Bathroom Inventory Panel/Toilet Paper".visible = true
 	_save_coins()
 
 # Once the shower sponge button has been pressed
@@ -257,24 +272,42 @@ func _on_shower_sponge_buy_button_pressed() -> void:
 	if _can_afford(cost):
 		coins = coins - cost
 		_update_coin_label()
+		# Adds item to inventory
+		$"Shower Inventory Panel/Shower Sponge".visible = true
 	else: 
 		funds_popup._show_message("Not Enough Funds!")
 	
-	# Now checking if they have any coins at all
+	# Update inventory and coins
+	_save_inventory()
 	_no_more_coins()
-	if _no_more_coins() == true:
-		$"Shower Inventory Panel/Shower Sponge".visible = false
-	else: 
-		$"Shower Inventory Panel/Shower Sponge".visible = true
 	_save_coins()
 
 # If the home icon is pressed, the pause screen menu will come up
 func _on_home_icon_button_pressed() -> void:
 	$"Pause Screen".visible = true
 
+# Saves inventory contents
+func _save_inventory():
+	var file = FileAccess.open(inventory_save_path, FileAccess.WRITE)
+	file.store_var($"Inventory Panel/Strawberry".visible)
+	file.store_var($"Inventory Panel/Cookie".visible)
+	file.store_var($"Inventory Panel/Lettuce".visible)
+	file.store_var($"Bathroom Inventory Panel/Toilet Paper".visible)
+	file.store_var($"Shower Inventory Panel/Shower Sponge".visible)
+
+func _load_inventory():
+	if FileAccess.file_exists(inventory_save_path):
+		var file = FileAccess.open(inventory_save_path, FileAccess.READ)
+		$"Inventory Panel/Strawberry".visible = file.get_var($"Inventory Panel/Strawberry".visible)
+		$"Inventory Panel/Cookie".visible = file.get_var($"Inventory Panel/Cookie".visible)
+		$"Inventory Panel/Lettuce".visible = file.get_var($"Inventory Panel/Lettuce".visible)
+		$"Bathroom Inventory Panel/Toilet Paper".visible = file.get_var($"Bathroom Inventory Panel/Toilet Paper".visible)
+		$"Shower Inventory Panel/Shower Sponge".visible = file.get_var($"Shower Inventory Panel/Shower Sponge".visible)
+
 # Creating a save function that saves everything
 func _save_game():
 	print("Entered game save")
 	_save_coins()
+	_save_inventory()
 	$Pet._save_stats()
 	print("Game Saved!")

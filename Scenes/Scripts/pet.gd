@@ -16,10 +16,10 @@ var bathroom := 100
 # When stats were last saved, in Unix time
 var last_save_time := 0
 
-# Use different save files for each mode
-const normal_save := "user://data.save"
-const speedrun_save := "user://data_speedrun.save"
+# Paths to save data, set in _ready() based on mode
 var save_path := ""
+var coin_path := ""
+var inventory_path := ""
 
 # These are to cap the max of the variables above
 var MAX_STAT = 100
@@ -39,9 +39,13 @@ var CRITICAL_LEVEL = 0
 # this begins the timer when the scene begins 
 func _ready():
 	if Global.is_speedrun:
-		save_path = speedrun_save
+		save_path = Global.speedrun_save_path
+		coin_path = Global.speedrun_coin_save_path
+		inventory_path = Global.speedrun_inventory_save_path
 	else:
-		save_path = normal_save
+		save_path = Global.normal_save_path
+		coin_path = Global.normal_coin_save_path
+		inventory_path = Global.normal_inventory_save_path
 	# File Saving Mechanisms - Daniel!
 	if FileAccess.file_exists(save_path):
 		_load_stats() # loads existing save
@@ -62,9 +66,15 @@ func _ready():
 		# Pet must have died by now
 		_pet_die("Too Hungry")
 	else:
-		# Skip ahead for time passed since last session
-		for i in range(num_intervals):
-			_on_timer_timeout()
+		# Advance stats for time passed since last session
+		# (Previously, loop and function were causing lag. Use math instead!)
+		hunger = max(0, hunger - DECAY_RATE * num_intervals)
+		cleanliness = max(0, cleanliness - DECAY_RATE * num_intervals)
+		bathroom = max(0, bathroom - DECAY_RATE * num_intervals)
+		emit_signal("hunger_changed", hunger)
+		emit_signal("bathroom_changed", bathroom)
+		emit_signal("shower_changed", cleanliness)
+		_check_pet_status()
 	
 	# Starts the timer
 	decay_timer.wait_time = Global.decay_interval
@@ -132,10 +142,15 @@ func _pet_die(reason: String):
 	print("Pet died because: ", reason, ".")
 	# Deletes the save files
 	DirAccess.remove_absolute(save_path)
-	DirAccess.remove_absolute(Global.coin_save_path)
-	get_tree().quit()
-	# TOOD: Need to add a game over screen
-	# Possibly even a restart button
+	DirAccess.remove_absolute(coin_path)
+	DirAccess.remove_absolute(inventory_path)
+	
+	# Goes to game over screen (within start screen scene)
+	Global.game_over = true
+	call_deferred("_change_scene")
+	
+func _change_scene():
+	get_tree().change_scene_to_file("res://Scenes/start_screen.tscn")
 
 # This is for testing
 # Printing out the stats so we can keep track or debug

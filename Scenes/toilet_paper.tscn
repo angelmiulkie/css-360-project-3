@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b1gykrkcb76wt"]
 
 [ext_resource type="Texture2D" uid="uid://cyg82pmu644do" path="res://Art/Toilet Paper - Transparent.png" id="1_3cmy5"]
-[ext_resource type="Script" uid="uid://cfpe8hn5owft6" path="res://Scenes/Scripts/Food Items/toilet_paper.gd" id="2_behgc"]
+[ext_resource type="Script" uid="uid://w8j3kubx2i8a" path="res://Scenes/Scripts/Food Items/toilet_paper.gd" id="2_behgc"]
 
 [node name="Toilet Paper" type="TextureRect"]
 offset_right = 40.0
