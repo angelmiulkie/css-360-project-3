@@ -323,6 +323,7 @@ offset_left = 676.0
 offset_top = 564.0
 offset_right = 754.0
 offset_bottom = 653.0
+mouse_filter = 0
 expand_mode = 1
 script = null
 

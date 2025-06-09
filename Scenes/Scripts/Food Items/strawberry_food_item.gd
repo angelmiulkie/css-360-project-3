@@ -4,6 +4,10 @@ extends TextureRect
 # and tahe name of the food
 var food_value = 10
 var food_name = "Strawberry"
+var original_position: Vector2
+
+func _ready():
+	original_position = position
 
 
 func _gui_input(event: InputEvent) -> void:
@@ -49,5 +53,7 @@ func _create_preview():
 	set_drag_preview(preview)
 	return preview
 
-func _drag_end():
-	visible = true
+func _notification(what):
+	if what == NOTIFICATION_DRAG_END:
+		position = original_position
+		visible = true
