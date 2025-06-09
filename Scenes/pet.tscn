@@ -2,9 +2,17 @@
 
 [ext_resource type="Script" uid="uid://ckknjx0h25o7v" path="res://Scenes/Scripts/pet.gd" id="1_qckc7"]
 [ext_resource type="Texture2D" uid="uid://ck0fdwxwoiuda" path="res://Art/Pet - Transparent.png" id="2_df2ap"]
+
+[ext_resource type="Script" uid="uid://c1rtb6mxfu2ph" path="res://Scenes/Scripts/drag_and_drop_zone.gd" id="3_df2ap"]
+
+[ext_resource type="Texture2D" uid="uid://btx01mwhapvfw" path="res://Art/BubblyPet-Transparent.png" id="3_1oafd"]
+[ext_resource type="Script" uid="uid://c1rtb6mxfu2ph" path="res://Scenes/Scripts/drag_and_drop_zone.gd" id="3_df2ap"]
+[ext_resource type="Texture2D" uid="uid://bsrn15jfc3xer" path="res://Art/HappyPet-Transparent.png" id="4_h5ngn"]
+
 [ext_resource type="Texture2D" uid="uid://btx01mwhapvfw" path="res://Art/BubblyPet-Transparent.png" id="3_1oafd"]
 [ext_resource type="Script" uid="uid://41630yhvpbi2" path="res://Scenes/Scripts/drag_and_drop_zone.gd" id="3_df2ap"]
 [ext_resource type="Texture2D" uid="uid://bsrn15jfc3xer" path="res://Art/HappyPet-Transparent.png" id="4_h5ngn"]
+
 [ext_resource type="PackedScene" uid="uid://bmanowsgmxhvb" path="res://Scenes/hunger_bar.tscn" id="4_u6lfn"]
 [ext_resource type="Texture2D" uid="uid://dkrbjktkprtj3" path="res://Art/Foot Button - Transparent.png" id="5_lq6iv"]
 [ext_resource type="Script" uid="uid://dlqyplq703g27" path="res://Scenes/Scripts/Health Bars/bathroom_bar.gd" id="6_24jqe"]
@@ -31,6 +39,7 @@ offset_bottom = 40.0
 
 [node name="Bubbly Tacocat" type="TextureRect" parent="Animation Images"]
 visible = false
+layout_mode = 0
 offset_left = 299.0
 offset_top = 237.0
 offset_right = 826.0
