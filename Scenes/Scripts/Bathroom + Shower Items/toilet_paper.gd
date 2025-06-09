@@ -5,6 +5,7 @@ extends TextureRect
 var bathroom_value = 25
 var item_name = "Toilet Paper"
 var original_position: Vector2
+var was_dropped = false
 
 func _ready():
 	original_position = position
@@ -15,6 +16,7 @@ func _gui_input(event: InputEvent) -> void:
 		grab_click_focus()
 
 func _get_drag_data(position: Vector2) -> Variant:
+	was_dropped = false 
 	var preview = _create_preview()
 	set_drag_preview(preview)
 	visible = false
@@ -55,6 +57,6 @@ func _create_preview():
 
 func _notification(what):
 	if what == NOTIFICATION_DRAG_END:
-		print("Drag end for TP")
-		position = original_position
-		visible = true
+		if not was_dropped:
+			position = original_position
+			visible = true

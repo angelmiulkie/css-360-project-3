@@ -5,16 +5,17 @@ extends TextureRect
 var food_value = 5
 var food_name = "Cookie"
 var original_position: Vector2
+var was_dropped = false
 
 func _ready():
 	original_position = position
-	print("Original Position for Cookie: ", original_position)
 
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		grab_click_focus()
 
 func _get_drag_data(position: Vector2) -> Variant:
+	was_dropped = false
 	var preview = _create_preview()
 	set_drag_preview(preview)
 	visible = false
@@ -55,5 +56,6 @@ func _create_preview():
 
 func _notification(what):
 	if what == NOTIFICATION_DRAG_END:
-		position = original_position
-		visible = true
+		if not was_dropped:
+			position = original_position
+			visible = true
