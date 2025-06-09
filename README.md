@@ -13,6 +13,6 @@ We've developed this game through Godot with GDScript. Through the game engine, 
 We want our team to also learn how to implement these types of concepts while learning how to develop a game. For most of the team, it is their first time ever developing a game, or even their first time using the game engine: Godot. 
 
 ## Installation Instructions
-Navigate to the website at https://angelmiulkie.github.io/css-360-project-3/
-Then download for the the OS you have, Mac or Windows
-Unzip that folder and run the Tacogotchi exe
+Navigate to the website at https://angelmiulkie.github.io/css-360-project-3/  
+Then download for the the OS you have, Mac or Windows  
+Unzip that folder and run the Tacogotchi exe  
