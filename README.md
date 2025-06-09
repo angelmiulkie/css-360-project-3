@@ -35,4 +35,3 @@ Unzip that folder and run the Tacogotchi exe
 Scroll Down until you see Security, their should be a button that says allow 
 install for tacogotchi. Retry opening game.
 4. Enjoy the Game!
-
