@@ -1,7 +1,5 @@
 extends Node2D
 
-@onready var game_over_screen = get_node("GameOverScreen")
-
 func _ready():
 	if Global.game_over:
 		$"GameOverScreen".visible = true

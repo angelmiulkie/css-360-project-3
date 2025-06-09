@@ -62,12 +62,13 @@ func _ready():
 	# since the last save was made
 	var cur_time = Time.get_unix_time_from_system()
 	var num_intervals = int((cur_time - last_save_time) / Global.decay_interval)
-	# Skip ahead for time passed since last session
-	for i in range(num_intervals):
-		_on_timer_timeout()
-		if not FileAccess.file_exists(save_path):
-			_check_pet_status()
-			break # Pet has died
+	if DECAY_RATE * num_intervals > MAX_STAT:
+		# Pet must have died by now
+		_pet_die("Too Hungry")
+	else:
+		# Skip ahead for time passed since last session
+		for i in range(num_intervals):
+			_on_timer_timeout()
 	
 	# Starts the timer
 	decay_timer.wait_time = Global.decay_interval
@@ -140,6 +141,9 @@ func _pet_die(reason: String):
 	
 	# Goes to game over screen (within start screen scene)
 	Global.game_over = true
+	call_deferred("_change_scene")
+	
+func _change_scene():
 	get_tree().change_scene_to_file("res://Scenes/start_screen.tscn")
 
 # This is for testing
