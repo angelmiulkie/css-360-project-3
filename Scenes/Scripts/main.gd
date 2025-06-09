@@ -25,6 +25,7 @@ var last_coin_time := 0
 # This is to make it so the funds pop up when they player doesn't have enough 
 # Funds to be able to buy an item 
 @onready var funds_popup = preload("res://Scenes/not_enough_funds_pop_up.tscn").instantiate()
+@onready var multiples_popup = preload("res://Scenes/buy_multiples_pop_up.tscn").instantiate()
 
 # READY ########################################################################
 func _ready():
@@ -67,6 +68,7 @@ func _ready():
 	
 	# This is for the funds pop up
 	add_child(funds_popup)
+	add_child(multiples_popup)
 
 
 # SIGNAL FUNCTIONS! ############################################################
@@ -205,6 +207,7 @@ func _on_shop_inventory_x_pressed() -> void:
 func _on_strawberry_buy_button_pressed() -> void:
 	# Don't buy if player already has item
 	if $"Inventory Panel/Strawberry".visible:
+		multiples_popup._show_message("Already Bought!")
 		return
 	# Subtract how much the strawberry is
 	var cost = 5
@@ -224,6 +227,7 @@ func _on_strawberry_buy_button_pressed() -> void:
 # Once the cookie buy button has been pressed
 func _on_cookie_buy_button_pressed() -> void:
 	if $"Inventory Panel/Cookie".visible:
+		multiples_popup._show_message("Already Bought!")
 		return
 	var cost = 10
 	if _can_afford(cost):
@@ -242,6 +246,7 @@ func _on_cookie_buy_button_pressed() -> void:
 # Once the lettuce buy button has been pressed
 func _on_lettuce_buy_button_pressed() -> void:
 	if $"Inventory Panel/Lettuce".visible:
+		multiples_popup._show_message("Already Bought!")
 		return
 	var cost = 15
 	if _can_afford(cost):
@@ -260,6 +265,7 @@ func _on_lettuce_buy_button_pressed() -> void:
 # Once the toilet paper button has been pressed
 func _on_toilet_paper_buy_button_pressed() -> void:
 	if $"Bathroom Inventory Panel/Toilet Paper".visible:
+		multiples_popup._show_message("Already Bought!")
 		return
 	var cost = 10
 	if _can_afford(cost):
@@ -278,6 +284,7 @@ func _on_toilet_paper_buy_button_pressed() -> void:
 # Once the shower sponge button has been pressed
 func _on_shower_sponge_buy_button_pressed() -> void:
 	if $"Shower Inventory Panel/Shower Sponge".visible:
+		multiples_popup._show_message("Already Bought!")
 		return
 	var cost = 10
 	if _can_afford(cost):

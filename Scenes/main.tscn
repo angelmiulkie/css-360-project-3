@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://xfj8xag6vw00"]
+[gd_scene load_steps=26 format=3 uid="uid://xfj8xag6vw00"]
 
 [ext_resource type="Script" uid="uid://d4lh23blssowx" path="res://Scenes/Scripts/main.gd" id="1_6bp64"]
 [ext_resource type="Texture2D" uid="uid://bhtfrbuyd56pn" path="res://Art/Room.png" id="1_8gbba"]
@@ -15,13 +15,14 @@
 [ext_resource type="Texture2D" uid="uid://d2bh2grt5w1m7" path="res://Art/Item Box - Transparent.png" id="11_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://b1gykrkcb76wt" path="res://Scenes/toilet_paper.tscn" id="12_6iyac"]
 [ext_resource type="PackedScene" uid="uid://c71l7ma44rx1r" path="res://Scenes/shower_sponge.tscn" id="13_jkdf5"]
-[ext_resource type="Script" uid="uid://sbteeho1fsgc" path="res://Scenes/Scripts/Bathroom + Shower Items/shower_sponge.gd" id="14_wsu2k"]
+[ext_resource type="Script" uid="uid://b140vcq1ktvwc" path="res://Scenes/Scripts/Bathroom + Shower Items/shower_sponge.gd" id="14_wsu2k"]
 [ext_resource type="FontFile" uid="uid://cvcowfaoh1fy" path="res://Fonts/Atop-R99O3.ttf" id="15_k12tt"]
 [ext_resource type="Texture2D" uid="uid://bwi85i64yblfu" path="res://Art/Cat Coin - Transparent.png" id="15_wsu2k"]
 [ext_resource type="PackedScene" uid="uid://cxq5t6ukmehtb" path="res://Scenes/shop.tscn" id="18_fevyy"]
-[ext_resource type="Script" uid="uid://b21maxsrlitrm" path="res://Scenes/Scripts/shop.gd" id="19_fevyy"]
+[ext_resource type="Script" uid="uid://vk8pnkcgi4ba" path="res://Scenes/Scripts/shop.gd" id="19_fevyy"]
 [ext_resource type="PackedScene" uid="uid://c16e600gjkxpw" path="res://Scenes/pause_screen.tscn" id="21_pdsj5"]
 [ext_resource type="PackedScene" uid="uid://bymt83yvok22w" path="res://Scenes/not_enough_funds_pop_up.tscn" id="22_ee4r6"]
+[ext_resource type="PackedScene" uid="uid://dmlx8n6muf3fe" path="res://Scenes/buy_multiples_pop_up.tscn" id="23_gt3je"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k12tt"]
 bg_color = Color(0.901961, 0.772549, 0.596078, 1)
@@ -367,6 +368,8 @@ text = "BUY!"
 visible = false
 
 [node name="Not Enough Funds Pop Up" parent="." instance=ExtResource("22_ee4r6")]
+
+[node name="Buy Multiples Pop Up" parent="." instance=ExtResource("23_gt3je")]
 
 [connection signal="pressed" from="Action Buttons/Food Icon Button" to="." method="_on_food_icon_button_pressed"]
 [connection signal="pressed" from="Action Buttons/Bathroom Icon Button" to="." method="_on_bathroom_icon_button_pressed"]
