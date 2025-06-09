@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://ckknjx0h25o7v" path="res://Scenes/Scripts/pet.gd" id="1_qckc7"]
 [ext_resource type="Texture2D" uid="uid://ck0fdwxwoiuda" path="res://Art/Pet - Transparent.png" id="2_df2ap"]
-[ext_resource type="Script" uid="uid://41630yhvpbi2" path="res://Scenes/Scripts/drag_and_drop_zone.gd" id="3_df2ap"]
+[ext_resource type="Script" uid="uid://c1rtb6mxfu2ph" path="res://Scenes/Scripts/drag_and_drop_zone.gd" id="3_df2ap"]
 [ext_resource type="PackedScene" uid="uid://bmanowsgmxhvb" path="res://Scenes/hunger_bar.tscn" id="4_u6lfn"]
 [ext_resource type="Texture2D" uid="uid://dkrbjktkprtj3" path="res://Art/Foot Button - Transparent.png" id="5_lq6iv"]
-[ext_resource type="Script" uid="uid://dlqyplq703g27" path="res://Scenes/Scripts/Health Bars/bathroom_bar.gd" id="6_24jqe"]
+[ext_resource type="Script" uid="uid://b3km3ily8eiy8" path="res://Scenes/Scripts/Health Bars/bathroom_bar.gd" id="6_24jqe"]
 [ext_resource type="Texture2D" uid="uid://ct1fpwlimvi8p" path="res://Art/Toilet Button - Transparent.png" id="7_lw8kh"]
-[ext_resource type="Script" uid="uid://bq11jj5vyhtsv" path="res://Scenes/Scripts/Health Bars/shower_bar.gd" id="8_mwyhm"]
+[ext_resource type="Script" uid="uid://dhm6xt5kj3ocf" path="res://Scenes/Scripts/Health Bars/shower_bar.gd" id="8_mwyhm"]
 [ext_resource type="Texture2D" uid="uid://wmsfk208ntss" path="res://Art/Washing Button - Transparent.png" id="9_1oafd"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lq6iv"]
@@ -40,9 +40,9 @@ script = ExtResource("3_df2ap")
 
 [node name="Hunger Bar" parent="." instance=ExtResource("4_u6lfn")]
 offset_left = 925.0
-offset_top = 665.0
+offset_top = 256.0
 offset_right = 1119.0
-offset_bottom = 702.0
+offset_bottom = 293.0
 value = 0.0
 
 [node name="Hunger Icon" type="TextureRect" parent="Hunger Bar"]
@@ -55,9 +55,9 @@ texture = ExtResource("5_lq6iv")
 
 [node name="Bathroom Bar" parent="." instance=ExtResource("4_u6lfn")]
 offset_left = 925.0
-offset_top = 597.0
+offset_top = 188.0
 offset_right = 1119.0
-offset_bottom = 634.0
+offset_bottom = 225.0
 value = 0.0
 script = ExtResource("6_24jqe")
 
@@ -71,9 +71,9 @@ texture = ExtResource("7_lw8kh")
 
 [node name="Shower Bar" parent="." instance=ExtResource("4_u6lfn")]
 offset_left = 925.0
-offset_top = 527.0
+offset_top = 118.0
 offset_right = 1119.0
-offset_bottom = 564.0
+offset_bottom = 155.0
 value = 0.0
 script = ExtResource("8_mwyhm")
 
