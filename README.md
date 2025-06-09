@@ -29,3 +29,10 @@ Unzip that folder and run the Tacogotchi exe
 
 ### Mac:
 1. Extract the folder
+2. Drag the tacogotchi.dmg file into your desktop
+3. Open the file
+- If Error occurs click close, then go to system setting->Privacy & Security->
+Scroll Down until you see Security, their should be a button that says allow 
+install for tacogotchi. Retry opening game.
+4. Enjoy the Game!
+
