@@ -203,6 +203,9 @@ func _on_shop_inventory_x_pressed() -> void:
 # BUYING BUTTONS FOR THE SHOP ##################################################
 # Once the strawberry buy button is pressed
 func _on_strawberry_buy_button_pressed() -> void:
+	# Don't buy if player already has item
+	if $"Inventory Panel/Strawberry".visible:
+		return
 	# Subtract how much the strawberry is
 	var cost = 5
 	if _can_afford(cost):
@@ -220,6 +223,8 @@ func _on_strawberry_buy_button_pressed() -> void:
 
 # Once the cookie buy button has been pressed
 func _on_cookie_buy_button_pressed() -> void:
+	if $"Inventory Panel/Cookie".visible:
+		return
 	var cost = 10
 	if _can_afford(cost):
 		coins = coins - cost
@@ -236,6 +241,8 @@ func _on_cookie_buy_button_pressed() -> void:
 
 # Once the lettuce buy button has been pressed
 func _on_lettuce_buy_button_pressed() -> void:
+	if $"Inventory Panel/Lettuce".visible:
+		return
 	var cost = 15
 	if _can_afford(cost):
 		coins = coins - cost
@@ -252,6 +259,8 @@ func _on_lettuce_buy_button_pressed() -> void:
 
 # Once the toilet paper button has been pressed
 func _on_toilet_paper_buy_button_pressed() -> void:
+	if $"Bathroom Inventory Panel/Toilet Paper".visible:
+		return
 	var cost = 10
 	if _can_afford(cost):
 		coins = coins - cost
@@ -268,6 +277,8 @@ func _on_toilet_paper_buy_button_pressed() -> void:
 
 # Once the shower sponge button has been pressed
 func _on_shower_sponge_buy_button_pressed() -> void:
+	if $"Shower Inventory Panel/Shower Sponge".visible:
+		return
 	var cost = 10
 	if _can_afford(cost):
 		coins = coins - cost
